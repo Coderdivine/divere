@@ -1,0 +1,140 @@
+{
+  "reg": [
+    
+    {
+      "username": "chimdi",
+      "email": "chimdi@gmail.com",
+      "password": "chimdi",
+      "conpass": "chimdi",
+      "id": 3
+    },
+    {
+      "username": "chimdi",
+      "email": "chimdi@gmail.com",
+      "password": "chimdi",
+      "conpass": "chimdi",
+      "id": 4
+    },
+    {
+      "username": "alexander",
+      "email": "2334@gmail.com",
+      "password": "chimdidivine",
+      "conpass": "chimdindu",
+      "id": 5
+    },
+    {
+      "username": "dabere",
+      "email": "dabere@gmail.com",
+      "password": "dabere",
+      "conpass": "dabere",
+      "id": 6
+    },
+    {
+      "username": "dabere",
+      "email": "dabere@gmail.com",
+      "password": "dabere",
+      "conpass": "dabere",
+      "id": 7
+    },
+    {
+      "username": "dabere",
+      "email": "chimdi@gmail.com",
+      "password": "dabere",
+      "conpass": "chimdi",
+      "id": 8
+    },
+    {
+      "username": "chimdindu",
+      "email": "chimdi4332@gmail.com",
+      "password": "divine",
+      "conpass": "divine",
+      "id": 9
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "names": [
+        {
+          "name": "braed",
+          "img": "./img",
+          "price": 45677,
+          "des": "plese make peeps order"
+        },
+        {
+          "name": "drench",
+          "img": "./img/la",
+          "price": 456771,
+          "des": "plese make peeps come abeg"
+        }
+      ],
+      "address": "address",
+      "num": 12334123456,
+      "lastname": "any name"
+    },
+    {
+      "id": 1,
+      "names": [
+        {
+          "name": "bread",
+          "img": "./img/bring",
+          "price": 55677,
+          "des": "please make peeps order"
+        },
+        {
+          "name": "french",
+          "img": "./img/laugh",
+          "price": 456777,
+          "des": "please make peeps Come abeg"
+        }
+      ],
+      "address": "address here",
+      "num": 18564833765,
+      "lastname": "any name here"
+    },
+    {
+      "id": "68156def-2734-4853-af70-476c861d9276",
+      "name": "bukka",
+      "names": [
+        {
+          "name": "Celebration Feast BucketFantasy",
+          "img": "./img/bucket.png",
+          "price": 7700,
+          "des": "3 Pcs chicken, 6 Pcs wings, & 6 Pcs strips"
+        }
+      ],
+      "address": "fjksvklj fk",
+      "num": "804949",
+      "lastname": "chimdi",
+      "total": 8300
+    },
+    {
+      "id": "0cf40565-3504-405c-87c9-5a98358ea57a",
+      "name": "bukka",
+      "names": [
+        {
+          "name": "Celebration Feast BucketFantasy",
+          "img": "./img/bucket.png",
+          "price": 7700,
+          "des": "3 Pcs chicken, 6 Pcs wings, & 6 Pcs strips"
+        },
+        {
+          "name": "5 IN 1 MEAL BOX (2 Strips)",
+          "img": "./img/5-in-1.png",
+          "price": 3700,
+          "des": "1 Pc COB HC/OR, 1 Zinger Burger, 1 Reg Fries, 1 Pepsi Pet Bottle & 2 Strips"
+        },
+        {
+          "name": "5-IN-1 Meal (Popcorn Chicken)",
+          "img": "./img/in-1.png",
+          "price": 3700,
+          "des": "1 zinger burger, 1 Pc chicken, 1 reg fries, 1 reg popcorn chicken, 1 bottle pepsi "
+        }
+      ],
+      "address": "fjksvklj fk",
+      "num": "19216881",
+      "lastname": "divine",
+      "total": 15700
+    }
+  ]
+}

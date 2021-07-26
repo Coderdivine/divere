@@ -1,0 +1,12 @@
+{
+  "name": "maywe",
+  "displayName": "maywe",
+  "expo": {
+    "name": "maywe",
+    "slug": "maywe",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

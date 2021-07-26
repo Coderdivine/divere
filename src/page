@@ -1,0 +1,1131 @@
+//
+ <div>
+          <Map google={this.props.google} zoom={14}>
+ 
+ <Marker onClick={this.onMarkerClick}
+         name={'Current location'} />
+
+ <InfoWindow onClose={this.onInfoWindowClose}>
+     
+ </InfoWindow>
+</Map> 
+          </div>
+//
+ //
+  const fetchData= async ()=>{
+       const result=await axios.get(
+       "http://loaclhost:3000/reg"
+       );
+       setPerson(result.data);
+       console.log(result.data);
+    };
+    const  fetchMed= async ()=>{
+        const ans=await axios.get(
+          "http://loaclhost:3000/orders"
+        );
+        setOrder(ans.data);
+        console.log(ans.data);
+    };
+    fetchMed();
+    fetchData();
+  setProcced(true);
+      console.log(data)
+      localStorage.setItem('username',data.username);
+      localStorage.setItem('password',data.password);
+     axios.post(url,{
+        username:data.username ,
+        gmail:data.email,
+        Password:data.password
+      })
+      .then(res=>{console.log(res.data);})
+      alert("Please refresh the page to login");
+
+     //s Window.Location.Reload();
+//
+POPULAR PRODUCTS 
+
+Popular products category description
+
+Grilled chicken POPULAR
+1 piece
+
+₦1,200.00
+Asun POPULAR
+1 portion
+//
+<GooglePayButton
+  environment="TEST"
+  paymentRequest={{
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [
+      {
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['MASTERCARD', 'VISA'],
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            gateway: 'example',
+          },
+        },
+      },
+    ],
+    merchantInfo: {
+      merchantId: '12345678901234567890',
+      merchantName: 'Demo Merchant',
+    },
+    transactionInfo: {
+      totalPriceStatus: 'FINAL',
+      totalPriceLabel: 'Total',
+      totalPrice: '100.00',
+      currencyCode: 'USD',
+      countryCode: 'US',
+    },
+  }}
+  onLoadPaymentData={paymentRequest => {
+    console.log('load payment data', paymentRequest);
+  }}
+  onPaymentAuthorized={paymentData => {
+      console.log('Payment Authorized Success', paymentData)
+      return {transactionState: 'SUCCESS'}
+  }}
+/>
+//
+    const[productbukka]=useState(
+        {name:"Bread",   img:"",   price: "220.00",   des:"",},{name:"Spaghetti Jollof",   img:"", price:"400.00", des:"",}, {name:"Beans and rice",  img:"", price:"600.00", des:"1 portion",},
+         {name:"Plain Beans", img:"",price:"240.00",des:"1 portion",},{name:"Jollof Rice", img:"",price:"400.00",des:"",},{name:"Coconut Rice", img:"",price:"750.00",des:"",},{name:"Spaghetti Jollof", img:"",price:"350.00",des:"1 portion",} ,{name:"Assorted meat", img:"",price:"550.00",des:"",},{name:"Beef", img:"",price:"550.00",des:"",},{name:"Water(small)", img:"",price:"250.00",des:"",},{name:"Pet bottles", img:"",price:"360.00",des:"",},{name:"Jucice", img:"",price:"350.00",des:"",},{name:"Malt", img:"",price:"500.00",des:"can",},{name:"Ribena", img:"",price:"600.00",des:"",},
+         {name:"Lucozde", img:"",price:"600.00",des:"",},{name:"Ofada sauce", img:"",price:"960.00",des:"",},
+         
+         );
+//
+<div>
+      {productkfc.map((productkfc,idx)=>(
+        <div key={idx}>
+          <h1>{productkfc.price}</h1>
+        </div>
+      ))}
+    </div>
+//
+₦1,400.00
+MAIN MEALS 
+
+Special fried rice
+1 portion
+
+₦900.00
+Village rice
+1 Portion
+
+₦800.00
+Fried Rice Fiesta
+₦750.00
+Chinese Rice
+₦650.00
+Spaghetti
+1 portion
+
+₦600.00
+MEAT 
+
+Beef
+1 piece
+
+₦400.00
+Grilled chicken POPULAR
+1 piece
+
+₦1,200.00
+Chicken in Stew
+1 piece
+
+₦600.00
+Barbeque chicken (Small)
+1 piece
+
+₦600.00
+Curry Fried Chicken
+1 portion
+
+₦600.00
+Asun POPULAR
+1 portion
+
+₦1,400.00
+DRINKS 
+
+Soft drink (PET)
+Plastic
+
+From
+₦300.00
+Fruity-life Parfait
+₦2,000.00
+Malta guiness (Can)
+Can
+
+₦300.00
+Eva water
+75cl
+
+₦250.00
+Aquafina Water
+75cl
+
+₦250.00
+Ribena
+₦450.00
+Lucozade Boost
+₦450.00
+
+//
+Rice and Beans
+
+
+Special Fried Rice
+
+
+Jollof Rice
+
+
+Fried Rice
+
+
+Village Rice
+
+
+Prawn Rice
+
+
+Jambolaya Rice
+
+
+Coconut Rice
+//soups and swallows
+Afang Soup
+
+
+Amala (Yam Flour)
+
+
+Eba
+
+
+Edikaikong
+
+
+Efo Riro
+
+
+Egusi
+
+
+Ewedu
+
+
+Gbegiri (Beans Soup)
+
+
+Goatmeat Pepper Soup
+
+
+Okro-Mixed
+
+
+Pounded Yam
+
+
+Semovita
+//protein
+Asun
+
+
+Barbeque Chicken
+
+
+Barbeque Chicken- Small
+
+
+Beef
+
+
+Boiled Egg
+
+
+CatFish Peppered Soup
+
+
+Chicken Wings
+
+
+Creamy Penny Pasta
+
+
+Crispy Chicken
+
+
+Egg Sauce
+
+
+Fish Sauce
+
+
+Fried Croaker Fish
+
+
+Gizzard
+
+
+Grilled Chicken
+
+
+Grilled Chicken-Big
+
+
+Grilled Turkey
+
+
+Grilled Turkey Wing
+
+
+Jumbo Snail
+
+
+Moi Moi- Leaf (Elewe)
+
+
+Moi Moi- Plastic
+
+
+Peppered Chicken
+
+
+Peppered Croaker Fish
+
+
+Peppered Ram Meat
+
+
+Ponmo
+
+
+Shaki
+
+
+Small Grilled Chicken
+
+
+Tiger prawn in batter
+
+
+Titus Fish
+
+
+Titus Fish In Stew
+
+
+Titus In Stew-Fried
+//snacks,ice cream and bread
+Beef Roll
+
+
+Bread
+
+
+Chicken Pie
+
+
+Comelle Ice Cream
+
+
+Doughnut
+
+
+Hotdog in Bread Roll
+
+
+Meat Pie
+
+
+Scotch Egg
+
+
+Sliced Cake
+//sides
+Chicken Salad-Cream
+
+
+Chicken Salad-Plain
+
+
+Vegetable Pasta Salad-Cream
+//drinks
+Aquafina Water
+
+
+Bullet Energy Drink
+
+
+Can Trophy
+
+
+Chapman
+
+
+Chivita Big
+
+
+Eva Water Medium 75Cl
+
+
+Eva Water Small
+
+
+Eva Water-Big
+
+
+Guiness Stout Can
+
+
+Heineken(big) can
+
+
+Malta Guinness
+
+
+Pulpy Five Alive
+
+
+Schweppes 35cl
+
+
+Smirnoff ice can
+
+
+Soft Drink
+
+
+Soft Drink[Plastic]
+
+
+Tropical Five Alive Big
+//value munch
+Fried Rice Brbchicken & Coke
+
+
+Fried Rice, Beef & Coke
+
+
+Fried Rice, Pep Chicken & Coke
+
+
+Fried Rice, Titus Fish & Coke
+
+
+Jollof Rice, Beef & Coke
+
+
+Jollof Rice, Pep Chicken & Coke
+
+
+Jollof Rice, Titus Fish & Coke
+
+
+Jollof Rice,Bachicken & Coke
+
+
+Spagetti Titus Fish & Coke
+
+
+Spagetti, Barb Chicken &Coke
+
+
+Spagetti, Prep Beef & Coke
+
+
+
+Spaghetti
+
+
+Stir Fry Spaghetti
+
+
+Plantain
+
+
+Crispy Fried Yam
+
+
+Yamarita
+
+
+Beans Pottage
+
+
+Boiled yam
+
+
+Fried Yam - Plain
+
+
+Chinese Rice
+
+
+Seafood Paella
+//kfc
+BULK ORDER MENU 
+
+Fantasy
+₦350.00
+PASTRIES 
+
+Meat Pie L/S
+₦400.00
+Beef Roll
+₦250.00
+Chicken Supreme
+₦400.00
+Doughnut
+₦200.00
+Scotch Eggs
+₦220.00
+MEALS 
+
+Fried Rice +1/4 Chicken
+₦1,500.00
+Jollof Rice + 1/4 Chicken
+₦1,500.00
+Fried Rice (Regular)
+₦500.00
+Jollof Rice (Regular)
+₦500.00
+Moin Moin
+₦250.00
+PROTEIN 
+
+Stewed Fried Fish ( Large)
+₦1,550.00
+Beef
+₦310.00
+1/4 Chicken Peppered
+₦1,050.00
+DRINKS 
+
+Nbc Drink 60Cl
+₦200.00
+Water
+₦150.00
+CONFECTIONERIES 
+
+Bread Loaf
+₦400.00
+SPECIALTIES/SIDES 
+
+Salad
+₦350.00
+Terms and Conditions  ·  Privacy Policy
+//Pasta
+PASTRIES 
+
+Meat Pie L/S
+₦400.00
+Beef Roll
+₦250.00
+Chicken Supreme
+₦400.00
+Doughnut
+₦200.00
+Scotch Eggs
+₦220.00
+MEALS 
+
+Fried Rice +1/4 Chicken
+₦1,500.00
+Jollof Rice + 1/4 Chicken
+₦1,500.00
+Fried Rice (Regular)
+₦500.00
+Jollof Rice (Regular)
+₦500.00
+Moin Moin
+₦250.00
+PROTEIN 
+const newdata = {...data}
+   newdata[e.target.id]=e.target.value
+   setData(newdata);
+  };
+Stewed Fried Fish ( Large)
+₦1,550.00
+Beef
+₦310.00
+1/4 Chicken Peppered
+₦1,050.00
+DRINKS 
+
+Nbc Drink 60Cl
+₦200.00
+Water
+₦150.00
+CONFECTIONERIES 
+
+Bread Loaf
+₦400.00
+SPECIALTIES/SIDES 
+
+Salad
+₦350.00
+Terms and Conditions  ·  Privacy Policy
+//unknown
+   {name:"Celebration Feast BucketFantasy", img:"./img", price: "7,700.00", des:"3 Pcs chicken, 6 Pcs wings, & 6 Pcs strips",},
+    {name:"5-IN-1 Meal Box (Zinger Wings)",
+    img:"./img/in-1.png",
+    price:"400.00",
+    des:"1 Pc COB HC/OR, 1 Zinger Burger, 1 Reg Fries, 1 Pepsi Pet Bottle & 2 Zinger Wings ",},
+    {name:"5-IN-1 Meal (Popcorn Chicken)",
+    img:"./img/in-1.png",
+    price:"3,700.00",
+    des:"1 zinger burger, 1 Pc chicken, 1 reg fries, 1 reg popcorn chicken, 1 bottle pepsi ",},
+    {name:"5 IN 1 MEAL BOX (2 Strips)", img:"./img/5-in-1.png",price:"3,700.00",des:"1 Pc COB HC/OR, 1 Zinger Burger, 1 Reg Fries, 1 Pepsi Pet Bottle & 2 Strips",},{name:"2 Fries & 2 Drinks - Bottles ", img:"./img/kfcpepsi.png",price:"2,550.00",des:"2 reg fries & 2 bottle pepsi",},{name:"5-IN-1 Meal Box (Special)", img:"./img/in-1.png",price:"3,800.00",des:"1 Pc COB HC/OR, 1 Reg Fries, 3 Pcs zinger wings, 3 Pcs Strips, 1 Pepsi Pet Bottle",},{name:"Zinger Wings", img:"./img/zingerwings.png",price:"1,500.00",des:"",},
+    {name:" Chicken srtipe", img:"./img/french fries.png",price:"1,450.00",des:"",},{name:"KFC French fries", img:"./img/french fries.png",price:"900.00",des:"",},{name:"Zinger Burger", img:"",price:"1,850.00",des:"",},{name:"Double Zinger Burger", img:"",price:"2,300.00",des:"",},{name:"Yam Fries", img:"./img/friedyam.png",price:"1,000.00",des:"",},{name:"KFC Popcorn Chicken", img:"./img/IMG_20210620_112507.jpg",price:"900.00",des:"",},{name:"Streetwise One", img:"./img/streetwisetwo.png",price:"1,750.00",des:"1 Pc chicken + 1 reg KFC spicy rice and 1 bottle pepsi",},{name:"Streetwise Two ", img:"./img/streetwisetwo.png",price:"2,500.00",des:"2 Pc chicken + 1 reg KFC spicy rice and 1 bottle pepsi",},{name:"Streetwise Three", img:"./img/streetwisetwo.png",price:"3,150.00",des:"3 Pc chicken + 1 reg KFC spicy rice and 1 bottle pepsi",},{name:"Zinger Burger Meals", img:"./img/IMG_20210620_112734.jpg",price:"3,400.00",des:"1 zinger burger, 1 Pc chicken, 1 regular fries & 1 bottle pepsi",},{name:"Double Zinger Burger Meal", img:"./img/IMG_20210620_112734.jpg",price:"3,350.00",des:"Regular chips and pet Pepsi",}
+   
+ ,{name:"Fill Up Feast", img:"./img/IMG_20210620_112808.jpg",price:"5,700.00",des:"Fill UP Feast (4 Pcs COB HC/OR, 4 Pcs Strips, 2 Mini Loaves & 2 Pepsi Pet Bottle)",},{name:"Fill Up One", img:"./img/IMG_20210620_112749.jpg",price:"2,500.00",des:"Fill Up One (1 Pc COB HC/OR, 1 KFC Spicy Rice, 1 Strip & 1 Pepsi Pet Bottle)",},{name:"Fill Up Two", img:"./img/IMG_20210620_112749.jpg",price:"3,250.00",des:"Fill Up Two (2 Pcs COB HC/OR, 1 KFC Spicy Rice, 2 strips, 1 Mini Loaf & 1 Pepsi Pet Bottle)",},{name:"Bucket", img:"./img/bucket.png",price:"11,000.00",des:"Served with pepsi",},{name:"Bucket (8 pieces)", img:"./img/bucket.png",price:"7,600.00",des:"Served with 1.5L Pepsi",},{name:"5 piece chicken", img:"./img/5piecechicken.png",price:"3,900.00",des:"",},{name:"1 piece of chicken ", img:"./img/barbeque.png",price:"850.00",des:"",},{name:"Fiery fries sachet", img:"",price:"350.00",des:"",},{name:"Moi Moi", img:"./img/moimoi.png",price:"900.00",des:"",},{name:"Dip(mayo)", img:"",price:"200.00",des:"",},{name:"Jollof rice", img:"./img/IMG_20210620_112300.jpg",price:"900.00",des:"",}
+    ,{name:"Vegetable fried rice", img:"",price:"1,000.00",des:"",},{name:"Pepper sauce", img:"",price:"350.00",des:"",},{name:"Vegetable fried rice ", img:"",price:"1,000.00",des:"",},{name:"Pepsi", img:"",price:"350.00",des:"50cl",},{name:"Pepsi", img:"",price:"1,300.00",des:"1..5l",},{name:"Miranda", img:"",price:"350.00",des:"",},{name:"7Up", img:"",price:"350.00",des:"50cl",},{name:"Teem", img:"",price:"350.00",des:"50cl",},{name:"H2O", img:"",price:"350.00",des:"",},{name:"Water", img:"",price:"300.00",des:"",},{name:"Lipton Ice Drink", img:"./img/liptonice.png",price:"400.00",des:"",}         ,{name:"Soft Drinks ", img:"",price:"300.00",des:"",},{name:"Cheese", img:"",price:"350.00",des:"",},{name:"Double Zinger Burger", img:"",price:"2,300.00",des:"",},{name:"Extra Large Yam Fries", img:"",price:"1,300.00",des:"",},{name:"Fiery fries satchet", img:"",price:"350.00",des:"",},{name:"KFC Spicy rice", img:"",price:"900.00",des:"",},{name:"Large fries", img:"",price:"1,200.00",des:"",},{name:"Large Spicy Rice", img:"",price:"1,100.00",des:"",},{name:"Large Vegetable Rice", img:"",price:"1,200.00",des:"",},{name:"Large Yam fries", img:"",price:"1,050.00",des:"",},
+    ,{name:"Water", img:"./img/eva.jpg",price:"400.00",des:"",},{name:"KFC spicy ricde- large(nsba)", img:"",price:"900.00",des:"",},{name:"Regular KFC spicy rice(gfd)", img:"",price:"900.00",des:"",},{name:"Regular Vegetable fried rice(as)", img:"",price:"1000.00",des:"",},{name:"Vegetable fried rice - large(fds)", img:"",price:"1,200.00",des:"",}]
+ 
+
+//
+//kfc
+
+CELEBRATION FEAST DEAL 
+
+Celebration Feast Bucket
+3 Pcs chicken, 6 Pcs wings, & 6 Pcs strips
+
+₦7,600.00
+COMBO MEAL 
+
+5-IN-1 Meal Box (Zinger Wings)
+1 Pc COB HC/OR, 1 Zinger Burger, 1 Reg Fries, 1 Pepsi Pet Bottle & 2 Zinger Wings
+
+₦3,600.00
+5-IN-1 Meal (Popcorn Chicken)
+1 zinger burger, 1 Pc chicken, 1 reg fries, 1 reg popcorn chicken, 1 bottle pepsi
+
+₦3,700.00
+5 IN 1 MEAL BOX (2 Strips)
+1 Pc COB HC/OR, 1 Zinger Burger, 1 Reg Fries, 1 Pepsi Pet Bottle & 2 Strips
+
+₦3,700.00
+2 Fries & 2 Drinks - Bottles
+2 reg fries & 2 bottle pepsi
+
+₦2,550.00
+5-IN-1 Meal Box (Special)
+1 Pc COB HC/OR, 1 Reg Fries, 3 Pcs zinger wings, 3 Pcs Strips, 1 Pepsi Pet Bottle
+
+₦3,700.00
+SNACKS 
+
+Zinger Wings
+From
+₦1,200.00
+Chicken strips
+From
+₦1,450.00
+KFC French fries
+From
+₦900.00
+Zinger Burger
+₦1,850.00
+Double Zinger Burger
+₦2,300.00
+Yam Fries
+From
+₦900.00
+KFC Popcorn chicken
+₦900.00
+KFC Popcorn chicken
+From
+₦900.00
+STREETWISE 
+
+Streetwise One
+1 Pc chicken + 1 reg KFC spicy rice and 1 bottle pepsi
+
+₦1,750.00
+Streetwise Two
+2 Pc chicken + 1 reg KFC spicy rice and 1 bottle pepsi
+
+₦2,500.00
+Streetwise Three
+3 Pc chicken + 1 reg KFC spicy rice and 1 bottle pepsi
+
+₦3,150.00
+BURGERS 
+
+Zinger Burger Meal
+Zinger Burger Meal (1 Zinger Burger, 1 Reg Fries & 1 Pepsi Pet Bottle)
+
+₦2,700.00
+Zinger Box Meal
+1 zinger burger, 1 Pc chicken, 1 regular fries & 1 bottle pepsi
+
+₦3,350.00
+Double Zinger Burger Meal
+Regular chips and pet Pepsi
+
+₦3,350.00
+FILL UPS 
+
+Fill Up Feast
+Fill UP Feast (4 Pcs COB HC/OR, 4 Pcs Strips, 2 Mini Loaves & 2 Pepsi Pet Bottle)
+
+₦5,700.00
+Fill Up One
+Fill Up One (1 Pc COB HC/OR, 1 KFC Spicy Rice, 1 Strip & 1 Pepsi Pet Bottle)
+
+₦2,500.00
+Fill Up Two
+Fill Up Two (2 Pcs COB HC/OR, 1 KFC Spicy Rice, 2 strips, 1 Mini Loaf & 1 Pepsi Pet Bottle)
+
+₦3,250.00
+BUCKET 
+
+Bucket
+Served with 1.5L of Pepsi
+
+From
+₦10,900.00
+Bucket (8 pieces)
+Served with 1.5L of Pepsi
+
+₦7,600.00
+CHICKEN 
+
+5 piece chicken
+₦3,900.00
+1 piece chicken
+₦850.00
+SIDES 
+
+Fiery fries sachet
+₦350.00
+Moi moi
+From
+₦900.00
+Dip (mayo)
+₦150.00
+KFC French fries
+From
+₦900.00
+KFC spicy rice
+Jollof rice
+
+From
+₦900.00
+Vegetable fried rice
+Fried rice
+
+From
+₦1,000.00
+Pepper Sauce
+₦350.00
+Vegetable fried rice
+Fried rice
+
+₦1,000.00
+BEVERAGES 
+
+Pepsi (50cl)
+₦350.00
+Pepsi (1..5L)
+₦1,300.00
+Miranda (50cl)
+From
+₦350.00
+7Up (50cl)
+₦350.00
+Teem (50cl)
+₦350.00
+H2O
+₦350.00
+Water
+₦300.00
+Lipton Ice Drink
+From
+₦400.00
+Soft drinks
+From
+₦300.00
+EXTRAS 
+
+Cheese
+₦350.00
+Double Zinger Burger
+₦2,300.00
+Extra large fries
+₦1,550.00
+Extra Large Yam Fries
+₦1,200.00
+Fiery fries satchet
+₦350.00
+KFC spicy rice
+₦900.00
+Large fries
+₦1,200.00
+Large Spicy Rice
+₦1,100.00
+Large vegetable Rice
+₦1,200.00
+Large Yam Fries
+₦1,050.00
+Moimoi
+₦900.00
+Regular vegetable Rice
+₦1,000.00
+Regular Yam Fries
+₦900.00
+Vegetable fried rice
+₦1,000.00
+Water
+₦400.00
+CHOICES 
+
+KFC spicy rice- Large (nbsa)
+₦900.00
+Regular KFC spicy rice (gfd)
+₦900.00
+Regular Vegetable fried rice (as)
+₦1,000.00
+Vegetable fried rice - Large (fds)
+₦1,200.00
+ Copyright 2021 Jumia Food is a registered trademark
+ //bukka hut
+ BREAKFAST 
+
+Bread
+₦220.00
+Sauce
+From
+₦900.00
+Boiled or fried yam
+₦540.00
+BREAKFAST 
+
+Bread
+₦220.00
+MAIN COURSE 
+
+Spaghetti jollof
+From
+₦300.00
+Rice and beans
+1 Portion
+
+₦600.00
+MAIN COURSE 
+
+Plain Beans
+1 Portion
+
+From
+₦240.00
+Rice and beans
+1 Portion
+
+₦600.00
+Jollof rice
+1 Portion
+
+From
+₦360.00
+Coconut rice
+1 Portion
+
+₦720.00
+Spaghetti jollof
+From
+₦300.00
+PROTEIN 
+
+To eat alone or with any of the extras available: plantain, bean, moi-moi or boiled eggs
+
+Ponmo
+₦240.00
+Assorted meat
+From
+₦550.00
+Beef
+₦550.00
+DRINKS 
+
+Water (small)
+₦240.00
+Soft drink
+Pet bottles
+
+From
+₦360.00
+Juice
+From
+₦350.00
+Malt
+Can (33cl)
+
+₦480.00
+Ribena
+₦600.00
+Lucozade
+₦600.00
+EXTRAS 
+
+Ofada sauce
+₦960.00
+Terms and Conditions  ·  Privacy Policy
+//sweet sensation
+CORPORATE MEAL 
+
+Basic Meal
+Your choice of meal + a side, twin chicken and your choice of fruit.
+
+₦2,000.00
+Standard Meal
+Your choice of meal, a side, proteins and your choice of fruit.
+
+₦2,500.00
+Executive Meal
+Your choice of meal, a side, proteins, fruits, and a tripple delight cake.
+
+₦5,500.00
+REAL DEAL MEALS 
+
+Top Up Jollof Rice
+₦600.00
+Top Up Fried Rice
+₦600.00
+Top Up Spaghetti
+₦600.00
+Spaghetti + beef + drink
+₦750.00
+Eba/Semovita/Amala + Beef/Fish+Soup
+₦1,000.00
+SS Giveaway Combo
+1 portion of rice + 1/8 star chicken
+
+₦600.00
+BREAKFAST 
+
+Sandwich
+From
+₦300.00
+Samosa
+4 pcs
+
+₦640.00
+MEALS 
+
+Jollof rice
+Per Portion
+
+₦400.00
+Fried rice
+Per Portion
+
+₦400.00
+Coconut rice
+Per Portion
+
+₦400.00
+Chinese Basmati rice
+Per Portion
+
+₦900.00
+Bulah rice
+Per Portion
+
+₦900.00
+Spaghetti
+Per Portion
+
+₦440.00
+French fries
+₦550.00
+Jamboree Rice
+A truly delicious sausage and chicken based basmati rice
+
+₦450.00
+BULAH NATIVES 
+
+White rice
+Per spoon
+
+₦400.00
+Leafy rice (ofada) + leafy sauce
+₦1,200.00
+Bulah pottage
+Per spoon
+
+₦600.00
+Dry beans
+Per spoon
+
+₦200.00
+Eforiro
+₦400.00
+Egusi
+₦400.00
+Edikaikong
+₦500.00
+Healthy okro
+₦500.00
+Beans pottage
+Per spoon
+
+₦440.00
+ASIDE 
+
+Vegetable salad
+₦300.00
+Bean cake
+₦300.00
+Dodo
+₦300.00
+Fish Picata
+₦700.00
+Healthy chicken salad
+₦700.00
+Exotic salad
+₦2,000.00
+PASTRIES 
+
+Meat pie
+₦350.00
+Chicken pie
+₦400.00
+Fish pie
+₦450.00
+Sausage roll
+₦220.00
+Doughnut
+₦220.00
+Scotch egg
+₦220.00
+SS caramel popcorn
+₦150.00
+PROTEINS 
+
+Beef
+₦400.00
+Ponmo in stew
+₦400.00
+Shaki in stew
+₦500.00
+Cat fish
+₦1,000.00
+Fresh fish in stew
+₦1,000.00
+Cow leg in stew
+₦580.00
+Mexican Chicken
+₦1,100.00
+//continue
+Star Chicken (Breaded)
+₦500.00
+Sunny (Asun)
+₦1,100.00
+Large Grillo Fish
+₦2,000.00
+Tossed fish
+₦1,000.00
+Turkey wing
+₦1,300.00
+Chicken Bag
+9 pcs Star Fried Chicken
+
+₦3,500.00
+Snail
+₦1,250.00
+Medium Grillo Fish
+₦1,800.00
+Titus Fish
+₦350.00
+Goat Meat
+₦650.00
+Medium Turkey
+₦750.00
+Swagg Chicken
+₦1,100.00
+Jumbo gizzard
+₦400.00
+BOGA MASTA 
+
+BM burger
+From
+₦700.00
+BM shawarma + drink (Large)
+₦1,000.00
+Mini Burger
+₦300.00
+YIPPEE 
+
+Freshly Squeezed Cucumber Juice
+₦850.00
+Freshly Squeezed fruit Juice Combo
+₦850.00
+Medium Tiger Nut
+₦650.00
+Large Tiger Nut
+₦900.00
+Segi's Zobo
+₦300.00
+DRINKS 
+
+Water
+From
+₦150.00
+Pet soft drink
+₦250.00
+Yoghurt drink
+From
+₦620.00
+Canned drinks
+₦220.00
+Hollandia
+₦300.00
+Lucozade pet drink
+₦350.00
+Small pack juice
+₦200.00
+Destiny Yoghourt
+₦450.00
+Utterly Fresh Juice
+₦550.00
+BREAD 
+
+Family loaf
+₦450.00
+Unsliced
+₦450.00
+Bread rolls
+₦450.00
+Wheat bread
+₦450.00
+Golden choco
+₦550.00
+Tutti fruity bread
+₦450.00
+OMG CAKES 
+
+Economy Medium Cake
+₦5,000.00
+EXTRAS 
+
+Eba
+₦150.00
+Semo
+₦150.00
+Amala
+₦150.00
+Terms and Conditions  ·  Privacy Policy
