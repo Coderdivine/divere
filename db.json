@@ -1,6 +1,5 @@
 {
   "reg": [
-    
     {
       "username": "chimdi",
       "email": "chimdi@gmail.com",
@@ -49,6 +48,13 @@
       "password": "divine",
       "conpass": "divine",
       "id": 9
+    },
+    {
+      "username": "chimdi",
+      "email": "dabere@gmail.com",
+      "password": "chimdi",
+      "conpass": "chimdi",
+      "id": 10
     }
   ],
   "orders": [
@@ -135,6 +141,53 @@
       "num": "19216881",
       "lastname": "divine",
       "total": 15700
+    },
+    {
+      "id": "1410396c-38f0-4935-95d6-7d7143a7f0e0",
+      "name": "bukka",
+      "names": [],
+      "address": "My Address",
+      "num": "19216881",
+      "lastname": "chimdi",
+      "total": 600
+    },
+    {
+      "id": "ca2903e4-d567-415c-bf99-6ea1efd8e023",
+      "name": "bukka",
+      "names": [
+        {
+          "name": "Bread",
+          "img": "./img/breaddd.jpeg",
+          "price": 220,
+          "des": ""
+        }
+      ],
+      "address": "My Address",
+      "num": "456771",
+      "lastname": "chimdindu",
+      "total": 820
+    },
+    {
+      "id": "85152879-04cc-4d4a-a811-16a8a237bb01",
+      "name": "THE PLACE",
+      "names": [
+        {
+          "name": "Bread",
+          "img": "./img/breaddd.jpeg",
+          "price": 220,
+          "des": ""
+        },
+        {
+          "name": "Special fried rice",
+          "img": "./img/IMG_20210620_112300.jpg",
+          "price": 900,
+          "des": "1 portion"
+        }
+      ],
+      "address": "My Address",
+      "num": "08038383680",
+      "lastname": "chimdindu",
+      "total": 1720
     }
   ]
 }
