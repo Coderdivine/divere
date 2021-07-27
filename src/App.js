@@ -56,7 +56,8 @@ const get= async()=>{
 if(res && res.data)setContact(res.data);
   }
 
-    const submit= async()=>{
+    const submit= async(e)=>{
+     e.preventDefault();
           const dataai= data ;
  const res= await Axios.post("/reg",dataai).catch((err)=>{console.log(err)})
 if(res)get();
