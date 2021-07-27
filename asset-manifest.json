@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/divere/static/css/main.17d0d710.chunk.css",
+    "main.js": "/divere/static/js/main.6cb2ba67.chunk.js",
+    "main.js.map": "/divere/static/js/main.6cb2ba67.chunk.js.map",
+    "runtime-main.js": "/divere/static/js/runtime-main.ba4fbe65.js",
+    "runtime-main.js.map": "/divere/static/js/runtime-main.ba4fbe65.js.map",
+    "static/js/2.f08c51e1.chunk.js": "/divere/static/js/2.f08c51e1.chunk.js",
+    "static/js/2.f08c51e1.chunk.js.map": "/divere/static/js/2.f08c51e1.chunk.js.map",
+    "static/js/3.163cf2c6.chunk.js": "/divere/static/js/3.163cf2c6.chunk.js",
+    "static/js/3.163cf2c6.chunk.js.map": "/divere/static/js/3.163cf2c6.chunk.js.map",
+    "index.html": "/divere/index.html",
+    "static/css/main.17d0d710.chunk.css.map": "/divere/static/css/main.17d0d710.chunk.css.map",
+    "static/js/2.f08c51e1.chunk.js.LICENSE.txt": "/divere/static/js/2.f08c51e1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba4fbe65.js",
+    "static/js/2.f08c51e1.chunk.js",
+    "static/css/main.17d0d710.chunk.css",
+    "static/js/main.6cb2ba67.chunk.js"
+  ]
+}
