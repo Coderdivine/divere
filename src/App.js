@@ -64,14 +64,13 @@ if(res && res.data)setContact(res.data);
 if(res)get();
       setSend(true);
       console.log(res);
- localStorage.setItem('data',JSON.stringify(data));}
-   
+ //localStorage.setItem('data',JSON.stringify(data));}
+ localStorage.setItem('data',"hey") }
  useEffect(()=>{
       get()
     },[])
   
- const loginlist= localStorage.getItem('data')?JSON.parse(localStorage.getItem('data')):[]
-  const[cool,setCool]=useState(loginlist); 
+
  
 
   return(<div>{!localStorage.getItem('data') ?<div>
@@ -103,53 +102,16 @@ if(res)get();
      </div>
   </div>
   </div>
-    </div> 
-     </div>
-<<<<<<< HEAD
-  </div>:<div>
-=======
-  
-  </div>:<div>{!localStorage.getItem('DIDA') ?<div>
-    <div>
-    <div class="account-page">
-  <div class="container">
-  <div class="row">
-  <div class="col-2" >
-   <img src="/storage/emulated/0/MyAlbums/image/images (19).jpeg" width="100%"/>
-   </div>
-
-   <div class="col-2" >
-     <div class="form-container">
-     <div class="form-btn" >
-     <span >Login</span>
-      <hr id="Indicator" />
-     </div>
-     <div>
-
-     
-     
-     <form id="Regform" onSubmit={(e)=>handle(e)} >
-     <input type="text" value={name} placeholder="Username" onChange={(e)=>setName(e.target.value)}/>
-     <input type="password" value={pass} placeholder="Password" onChange={(e)=>setPass(e.target.value)}/>
-     <button  class="btn" type="submit">Login</button>
-        <div className="never"><h2 class="never">{never}</h2></div>
-     </form>
-     </div>
-     </div>
-  </div>
-  </div>
-    </div> 
-     </div>
-  </div>
-  </div>
-  :<div><div>
->>>>>>> 6b4a2f0496fb77f115ebc75922b713b9f3c64b08
+   </div></div></div> 
+    
+  :<div>
     <create.Provider value={{contact,order,getone,gettwo,getthree}}>
     <Homepage  />
-    </create.Provider>
+    </create.Provider> </div>}
+    </div>
     
-    </div>}</div>);
+    )
   
-};
+}
 
-export default App;
+export default App ;
