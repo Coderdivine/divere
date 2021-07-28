@@ -215,7 +215,7 @@ const  cartedd= carting.map(listing =>
   if(localStorage.getItem("address")){
        if(localStorage.getItem('lastname',)){
          if(localStorage.getItem('num')){
-         setOne(<button onClick={(e)=>Buy(e)}>Buy</button>);
+         setOne(<PaystackButton {...componentProps} />);
         }else{  e.preventDefault();
           alert("Please enter your number")}
           }else{ e.preventDefault();

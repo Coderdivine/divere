@@ -55,6 +55,41 @@
       "password": "chimdi",
       "conpass": "chimdi",
       "id": 10
+    },
+    {
+      "username": "chimdindu",
+      "email": "chimdi4332@gmail.com",
+      "password": "chimdindi",
+      "conpass": "chimdindu",
+      "id": 11
+    },
+    {
+      "username": "chimdindu",
+      "email": "chimdindu@gmail.com",
+      "password": "chimdindi",
+      "conpass": "chimdindi",
+      "id": 12
+    },
+    {
+      "username": "chimdindu",
+      "email": "chimdindu@gmail.com",
+      "password": "chimdindi",
+      "conpass": "chimdindi",
+      "id": 13
+    },
+    {
+      "username": "chimdindu",
+      "email": "chimdindu@gmail.com",
+      "password": "chimdindi",
+      "conpass": "chimdindi",
+      "id": 14
+    },
+    {
+      "username": "chimdindu",
+      "email": "",
+      "password": "chimdindi",
+      "conpass": "",
+      "id": 15
     }
   ],
   "orders": [
@@ -188,6 +223,53 @@
       "num": "08038383680",
       "lastname": "chimdindu",
       "total": 1720
+    },
+    {
+      "id": "a1cc386d-1833-4834-b49e-384e4ed4653b",
+      "name": "bukka",
+      "names": [],
+      "address": "chimdindu",
+      "num": "34567890",
+      "lastname": "divine",
+      "total": 600
+    },
+    {
+      "id": "287f3c32-1cde-49ae-b853-6a448f259da1",
+      "name": "bukka",
+      "names": [
+        {
+          "name": "Bread",
+          "img": "./img/breaddd.jpeg",
+          "price": 220,
+          "des": ""
+        }
+      ],
+      "address": "halooo",
+      "num": "34567890",
+      "lastname": "divine",
+      "total": 820
+    },
+    {
+      "id": "f855e20b-b826-413a-a9dc-103532ee8451",
+      "name": "bukka",
+      "names": [
+        {
+          "name": "Bread",
+          "img": "./img/breaddd.jpeg",
+          "price": 220,
+          "des": ""
+        },
+        {
+          "name": "Spaghetti Jollof",
+          "img": "./img/IMG_20210620_112409.jpg",
+          "price": 400,
+          "des": ""
+        }
+      ],
+      "address": "chimdindu",
+      "num": "34567890",
+      "lastname": "divine",
+      "total": 1220
     }
   ]
 }
