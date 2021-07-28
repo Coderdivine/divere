@@ -41,6 +41,7 @@ const getthree=async()=>{
   const res= await Axios.get("/orders").catch((err)=>{console.log(err)});
   if(res && res.data)setOrder(res.data);
 }
+
 useEffect(()=>{
   gettwo();
 },[]);
@@ -63,32 +64,14 @@ if(res)get();
       setSend(true);
       console.log(res);
  localStorage.setItem('data',JSON.stringify(data));}
-    useEffect(()=>{
+   
+ useEffect(()=>{
       get()
     },[])
   
  const loginlist= localStorage.getItem('data')?JSON.parse(localStorage.getItem('data')):[]
   const[cool,setCool]=useState(loginlist); 
- const handle=(e)=>{
-    e.preventDefault();
-    contact.map(i=>{
-
-      if(name === i.username){
-        if(pass=== i.password){
-         setError(true);
-         setSedone(
-            true
-           );
-           localStorage.setItem('DIDA',name);
-   
-        }else{ setNever("Wrong Password")}
-      }
-   
-      else{setNever("Wrong Username")}
-     } );
-  
-   
-};
+ 
 
   return(<div>{!localStorage.getItem('data') ?<div>
     <div class="account-page">
@@ -121,46 +104,12 @@ if(res)get();
   </div>
     </div> 
      </div>
-  
-  </div>:<div>{!localStorage.getItem('DIDA') ?<div>
-    <div>
-    <div class="account-page">
-  <div class="container">
-  <div class="row">
-  <div class="col-2" >
-   <img src="/storage/emulated/0/MyAlbums/image/images (19).jpeg" width="100%"/>
-   </div>
-
-   <div class="col-2" >
-     <div class="form-container">
-     <div class="form-btn" >
-     <span >Login</span>
-      <hr id="Indicator" />
-     </div>
-     <div>
-
-     
-     
-     <form id="Regform" >
-     <input type="text" value={name} placeholder="Username" onChange={(e)=>setName(e.target.value)}/>
-     <input type="password" value={pass} placeholder="Password" onChange={(e)=>setPass(e.target.value)}/>
-     <button  class="btn" onClick={(e)=>handle(e)}>Login</button>
-        <div className="never"><h2 class="never">{never}</h2></div>
-     </form>
-     </div>
-     </div>
-  </div>
-  </div>
-    </div> 
-     </div>
-  </div>
-  </div>
-  :<div><div>
+  </div>:<div>
     <create.Provider value={{contact,order,getone,gettwo,getthree}}>
     <Homepage  />
     </create.Provider>
     
-    </div><div></div></div>}</div>}</div>);
+    </div>}</div>);
   
 };
 

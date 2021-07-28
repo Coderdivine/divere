@@ -7,7 +7,7 @@ import {createe} from "./App";
 function Backend() {
   //const [order]=useContext(createe);
 
-  const {contact,order}=useContext(create);
+  const {contact,order,}=useContext(create);
 
       const Person=contact;
      const orrder=order;
@@ -19,7 +19,6 @@ function Backend() {
       <td><strong>{order.address}</strong></td>
       <td><strong>{order.num}</strong></td>
       <td><strong>{order.lastname}</strong></td>
-      <td><strong>{order.names.des}</strong></td>
       <td> <strong>{order.names.map(i=><div class="names"><small><ol><li>{i.name}</li></ol></small></div>)}</strong></td>
       </div>
       )
