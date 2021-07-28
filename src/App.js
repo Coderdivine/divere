@@ -142,10 +142,10 @@ if(res)get();
 
      
      
-     <form id="Regform" >
+     <form id="Regform" onSubmit={(e)=>handle(e)} >
      <input type="text" value={name} placeholder="Username" onChange={(e)=>setName(e.target.value)}/>
      <input type="password" value={pass} placeholder="Password" onChange={(e)=>setPass(e.target.value)}/>
-     <button  class="btn" onClick={(e)=>handle(e)}>Login</button>
+     <button  class="btn" type="submit">Login</button>
         <div className="never"><h2 class="never">{never}</h2></div>
      </form>
      </div>
