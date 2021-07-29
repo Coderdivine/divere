@@ -90,6 +90,27 @@
       "password": "chimdindi",
       "conpass": "",
       "id": 15
+    },
+    {
+      "username": "chimdindu",
+      "email": "",
+      "password": "chimdindi",
+      "conpass": "",
+      "id": 16
+    },
+    {
+      "username": "chimdindu",
+      "email": "",
+      "password": "chimdindi",
+      "conpass": "",
+      "id": 17
+    },
+    {
+      "username": "chimdi",
+      "email": "alexander@gmail.com",
+      "password": "chimdi",
+      "conpass": "chimdindu",
+      "id": 18
     }
   ],
   "orders": [
