@@ -114,4 +114,4 @@ if(res)get();
   
 }
 
-export default App ;
+export default App;
