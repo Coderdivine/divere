@@ -2,6 +2,7 @@ import './App.css';
 import React,{useState,useEffect,useContext,createContext} from 'react';
 import Homepage from "./Homepage";
 import {Axios} from "./contact";
+
 export const create=createContext();
  export  function App() {
   const[order,setOrder]=useState([]);
@@ -70,45 +71,23 @@ if(res)get();
       get()
     },[])
   
+ const[load,setLoad]=useState(true);
+ useEffect(() => {
+   setInterval(() => {
+     setLoad(false);
+   }, 4000);
+ }, [load]);
 
- 
-
-  return(<div>{!localStorage.getItem('data') ?<div>
-    <div class="account-page">
-  <div class="container">
-  <div class="row">
-  <div class="col-2" >
-   <img src="/storage/emulated/0/MyAlbums/image/images (19).jpeg" width="100%"/>
+  return(<div>{load ?<div class="load"><img src="./img/diverfoodhome.png" alt="DivereFood"/></div>:<div> 
+    <div>
+    {!localStorage.getItem('data') ?alert("Sign up first"):<div></div>}
+      <create.Provider value={{contact,order,getone,gettwo,getthree,submit,handles}}>
+      <Homepage  />
+      </create.Provider>
+       </div>
+      
+      </div>}
    </div>
-
-   <div class="col-2" >
-     <div class="form-container">
-     <div class="form-btn" >
-     <span onclick="login()">Register</span>
-      <hr id="Indicator" />
-     </div>
-     <div>
-
-     
-     
-     <form id="Regform" onSubmit={(e)=>submit(e)}>
-     <input type="text" id="username" placeholder="Username" onChange={(e)=>handles(e)}/>
-      <input type="email" id="email" placeholder="Email"  onChange={(e)=>handles(e)} />
-     <input type="password" id="password" placeholder="Password"  onChange={(e)=>handles(e)} />
-     <input type="password" id="conpass" placeholder="Confrim Password" onChange={(e)=>handles(e)}  />
-     <button type="submit" class="btn">Register</button>
-     </form>
-     </div>
-     </div>
-  </div>
-  </div>
-   </div></div></div> 
-    
-  :<div>
-    <create.Provider value={{contact,order,getone,gettwo,getthree}}>
-    <Homepage  />
-    </create.Provider> </div>}
-    </div>
     
     )
   

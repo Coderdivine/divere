@@ -9,13 +9,13 @@ import {Added} from "./Bukka"
 import Kfc from "./Kfc";
 import Theplace from "./Theplace";
 import Select from "./Select";
-//import {createe} from "./App";
+import {create} from "./App";
 //import GooglePayButton from '@google-pay/button-react';
 //import {Map, InfoWindsow, Marker, GoogleApiWrapper} from 'google-maps-react';
 //import Myapp from "./Myapp";
 function Homepage() {
        
-       
+  const {submit,handles}=useContext(create);
       const[sedopass]=useState("chimdinduasdasd");
       const[sedo]=useState("chimdindu");
      const [call,setCall]=useState("");
@@ -183,10 +183,7 @@ function Homepage() {
        
     };
  const[address,setAddress]=useState("");
- const [orm,setOrm]=useState(false);
- const logout=(e)=>{
-     setOrm(true);
-};
+
  const[contact,setContact]=useState([]);
 const get= async()=>{
     const res= await Axios.get("/reg").catch((err)=>{console.log(err)})
@@ -231,10 +228,39 @@ const restone=(e)=>{
      setMenu(true);
    };
    const haha=(e)=>{setMenu(false)}; 
- const handlelogout=(e)=>{
-  localStorage.setItem('DIDA',"");
-  alert("Reload page...");
- };
+
+ const logout=(e)=>{
+  setOccur(true);
+  setNextpage(
+    <div><div class="account-page">
+    <div class="container">
+    <div class="row">
+    <div class="col-2" >
+     </div>
+  
+     <div class="col-2" >
+       <div class="form-container">
+       <div class="form-btn" >
+       <span onclick="login()">Sign up</span>
+        <hr id="Indicator" />
+       </div>
+       <div>
+  
+       
+       
+       <form id="Regform" onSubmit={submit}>
+       <input type="text" id="username" placeholder="Username" onChange={handles}/>
+        <input type="email" id="email" placeholder="Email"  onChange={handles} />
+       <input type="password" id="password" placeholder="Password"  onChange={handles} />
+       <input type="password" id="conpass" placeholder="Confrim Password" onChange={handles}  />
+       <button type="submit" class="btn">Sign up</button>
+       </form>
+       </div>
+       </div>
+    </div>
+    </div>
+     </div></div></div>);
+};
    
     return (
         <div className="popss">
@@ -243,7 +269,7 @@ const restone=(e)=>{
 <div class="container">
 <div class="navbar">
   <div>
-  <a href="http:localhost:3001"> <img src="./img/divereli.png"  width="100px" /></a>
+  <a href=""> <img src="./img/divereli.png"  width="100px" /></a>
   </div>
   <nav><nav>
     <ul><div class="li">
@@ -251,9 +277,8 @@ const restone=(e)=>{
      <li><a onClick={(e)=>shshs(e)}>About</a></li>
      <li><a onClick={(e)=>shshs(e)}>Help</a></li>
      <li><a  onClick={(e)=>Setting(e)}>Settings</a></li>
-     <li><a  onClick={(e)=>logout(e)}>Logout</a></li>
+     <li><a  onClick={(e)=>logout(e)}>Sign up</a></li>
 
-     <li>{!orm?<li></li>:<li class="pa"><a>Are you sure <br/>you want to <br/>logout <br/><span onClick={(e)=>handlelogout(e)}>Yes</span>  or  <span onClick={(e)=> setOrm(false)}>No</span></a></li>}</li>
     </div>  
     </ul>
   </nav>
@@ -262,8 +287,7 @@ const restone=(e)=>{
      <li><a onClick={(e)=>shshs(e)}>About</a></li>
      <li><a onClick={(e)=>shshs(e)}>Help</a></li>
      <li><a  onClick={(e)=>Setting(e)}>Settings</a></li>
-     <li><a  onClick={(e)=>logout(e)}>Logout</a></li>
-    <li>{!orm?<li></li>:<li class="pa"><a>Are you sure <br/>you want to <br/>logout <br/><span onClick={(e)=>handlelogout(e)}>Yes</span>  or  <span onClick={(e)=> setOrm(false)}>No</span></a></li>}</li>
+     <li><a  onClick={(e)=>logout(e)}>{!localStorage.getItem('data') ?<div>Sign up</div>:<div></div>}</a></li>
        </ul></div></div>}</div>
   </nav>
 
@@ -271,9 +295,13 @@ const restone=(e)=>{
   width="30px" height="90px" onClick={(e)=>handle(e)}/></div>
   </div></div>
  
-     {!occur?<div><div className="nav"></div>
+     {!occur?<div><br/>
+      <div class="col-2">
+       </div><div className="nav"></div>
          <div className="hh1"><h1>Choose Location :</h1></div><br/>
-         <div className="pageinput"><small><strong><button class="map" onClick={(e)=>handlemap(e)}>Use Map ...</button></strong></small><br/><input type="text" value={address} placeholder="No/Street/Town/City" onChange={(e)=>setAddress(e.target.value)}/><button className="address" onClick={(e)=>localStorage.setItem("address",address)}>Save</button></div><br/><br/>
+         <div className="pageinput">
+           <br/>
+           <input type="text" value={address} placeholder="No/Street/Town/City" onChange={(e)=>setAddress(e.target.value)}/><button className="address" onClick={(e)=>localStorage.setItem("address",address)}>Save</button></div><br/><br/>
         
          <div className="container-5">
            <h1>BUKKA HUT</h1>
@@ -297,6 +325,10 @@ const restone=(e)=>{
           onClick={(e)=>restthree(e)} /></div>
 
          </div>
+         <br/>
+         <div class="img">
+          <img src=".img/adsdida.png"  alt="img"/>
+        </div>
 
      </div>:<div>{nextpage}</div>}
 

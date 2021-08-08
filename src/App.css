@@ -6,6 +6,29 @@
 body{
 font-family: 'Poppins', sans-serif;
 }
+.load img{
+  width:320px;
+  height: 45em;
+  overflow:hidden;
+  
+  position:absolute;
+  align-items: center;
+  margin-left: -28px;
+ 
+
+}
+.img{
+  width:305px;
+  height: 16em;
+  overflow:hidden;
+  margin: auto;
+  position: relative;
+  align-items: center;
+  border-radius: 15px;
+  
+  border: 2px solid brown;
+}
+ 
 .order td{
   border: brown;
   border-radius: 15px;
@@ -248,6 +271,7 @@ padding:8px;
 font-size:20px;
 margin-left:100px;
 border:1px solid #994543;
+justify-content: center;
 }
 .pageinput input{
   text-align: center;
@@ -255,8 +279,13 @@ border:1px solid #994543;
 height:30px;
 padding:8px;
 font-size:20px;
-margin-left:100px;
+margin-left:10px;
 border:1px solid #ff523b;
+border-radius: 25px;
+align-items: center;
+display:flex;
+
+
 }
 .address{
   display:inline-block;

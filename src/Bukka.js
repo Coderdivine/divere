@@ -170,7 +170,7 @@ const subtotal= totalone + 300 +addup ;
     const addd= localStorage.getItem("address");
     const namee=localStorage.getItem("lastname");
     const phone = localStorage.getItem("num");
-    const  PublicKey = "pk_live_363aafee589248daecbc80031e7feac0b2139eeb";
+    const  PublicKey = "pk_test_d53fe76a869cddc316efd23cee14429669489d15";
        const componentProps={
          email,
          amount,
