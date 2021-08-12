@@ -78,7 +78,7 @@ if(res)get();
    }, 4000);
  }, [load]);
 
-  return(<div>{load ?<div class="load"><img src="./img/diverfoodhome.png" alt="DivereFood"/></div>:<div> 
+  return(<div>{load ?<div class="load"><img src="./img/diverfoodhome.png" alt=" Divere Food..."/></div>:<div> 
     <div>
     {!localStorage.getItem('data') ?alert("Sign up first"):<div></div>}
       <create.Provider value={{contact,order,getone,gettwo,getthree,submit,handles}}>

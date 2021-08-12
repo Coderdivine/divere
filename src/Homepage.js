@@ -327,7 +327,7 @@ const restone=(e)=>{
          </div>
          <br/>
          <div class="img">
-          <img src=".img/adsdida.png"  alt="img"/>
+          <img src=".img/adsdida.png"  alt="Advert Page ..."/>
         </div>
 
      </div>:<div>{nextpage}</div>}
