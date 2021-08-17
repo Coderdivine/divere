@@ -25,7 +25,13 @@ const {getone}=useContext(create);
  const[trigger,setTrigger]=useState(false);
 const [send,setSend]=useState(false);
  const[count,setCount]=useState(0);
- 
+ useEffect(() => {
+  const localcounter= localStorage.setItem('count',count.toString());
+      if(localcounter){
+          setCount(localcounter);
+      }
+      
+   }, [count])
  useEffect((e) => {
   if(5==localStorage.getItem("count")){
     //e.preventDefault();
@@ -93,15 +99,8 @@ let totalone = 0;
 incart.forEach((list)=>{
   totalone += list.price;
 })
-const addup= localStorage.getItem("percento")?localStorage.getItem("percento"):300;
-const subtotal= totalone + 300 +addup ;
-//const[order,setOrder]=useState([]);
-/*const get=async()=>{
-  
-  const res= await Axios.get("/orders").catch((err)=>{console.log(err)});
-  if(res && res.data)setOrder(res.data);
-}*/
-
+const addup= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("percento")):300;
+const subtotal= totalone + 300 + addup ;
 
 
   
@@ -163,17 +162,18 @@ const subtotal= totalone + 300 +addup ;
        );
        
        
-       
+       const[emaill,setEmaill]=useState("");
+    
      
-   const amount =totalone;
-    const email = localStorage.getItem("email");
+   const amount =subtotal;
+    const email = emaill;
     const addd= localStorage.getItem("address");
     const namee=localStorage.getItem("lastname");
     const phone = localStorage.getItem("num");
     const  PublicKey = "pk_test_d53fe76a869cddc316efd23cee14429669489d15";
        const componentProps={
          email,
-         amount,
+        amount,
          metadata:{
            addd,
            namee,
@@ -181,7 +181,7 @@ const subtotal= totalone + 300 +addup ;
            PublicKey,
            text:"Pay Now",
            onSuccess:(e)=>Buy(e),
-           onClose:()=>alert("Go")
+           onClose:()=>alert("Please try again later")
          }
        }
        const [red,setRed]=useState(false);
@@ -200,9 +200,9 @@ const subtotal= totalone + 300 +addup ;
       const handledone=(e)=>{
         setDone(false)
       }
-      const[num,setNum]=useState()
+    const[num,setNum]=useState(0);
       const[lastname,setLastname]=useState("");
-    
+ 
   const mapfree=localStorage.getItem("percento")*localStorage.getItem("count");
  const freemap=mapfree-350;
       const submit=(e)=>{
@@ -212,7 +212,12 @@ const subtotal= totalone + 300 +addup ;
   if(localStorage.getItem("address")){
        if(localStorage.getItem('lastname',)){
          if(localStorage.getItem('num')){
-         setOne(<PaystackButton {...componentProps} />);
+           if(!email){
+       alert("Please Enter your Email")
+           }else{
+            setOne(<button class="btn" onClick={(e)=>Buy(e)}>Buy</button>);
+  
+           }
         }else{  e.preventDefault();
           alert("Please enter your number")}
           }else{ e.preventDefault();
@@ -266,6 +271,8 @@ return(<div>
 <form id="Regform" onSubmit={(e)=>submit(e)} >
 <input type="name" id="password" placeholder="Last Name"  onChange={(e)=>setLastname(e.target.value)} />
 <input type="phone" id="conpass" placeholder="Phone Number" onChange={(e)=>setNum(e.target.value)}  />
+<input type="email" id="email" placeholder="Email" onChange={(e)=>setEmaill(e.target.value)}  />
+
 <button type="submit" class="btn" >Procede</button>
 </form></div>
 <div>{one}</div><div></div>{localStorage.getItem("count")}

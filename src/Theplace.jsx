@@ -1,7 +1,5 @@
 import React,{useState,useEffect,useContext} from 'react'
 import "./App.css";
-import Admin from './Admin';
-//import axios from "axios";
 import {v4 as uuidv4} from 'uuid';
 import {Axios} from "./contact";
 import Select from "./Select";
@@ -94,7 +92,7 @@ const[send,setSend]=useState(false);
     setCart(cart.filter (list=>list !==liststoremove));   
   };
   
-const addup= localStorage.getItem("percento")?localStorage.getItem("percento"):300;
+const addup= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("percento")):300;
 useEffect(()=>{
   localStorage.setItem('totalone',addup);
 },[addup]);
@@ -104,12 +102,7 @@ cart.forEach((list)=>{
 })
 const subtotal= totalone + 300 + addup;
 
-//const [order,setOrder]=useState([]);
-/*const get=async()=>{
-  
-  const res= await Axios.get("/orders").catch((err)=>{console.log(err)});
-  if(res && res.data)setOrder(res.data);
-}*/
+
  const Buy=async(e)=>{
   const request= {
     id:uuidv4(),
@@ -166,9 +159,10 @@ e.preventDefault();
       
       );
       const [red,setRed]=useState(false);
-    
-     const amount =totalone;
-      const email = localStorage.getItem("email");
+      const [emaill,setEmaill]=useState("");
+
+     const amount =subtotal;
+      const email = emaill;
       const addd= localStorage.getItem("address");
       const namee=localStorage.getItem("lastname");
       const phone = localStorage.getItem("num");
@@ -208,7 +202,13 @@ e.preventDefault();
 if(localStorage.getItem("address")){
      if(localStorage.getItem('lastname',)){
        if(localStorage.getItem('num')){
-       setOne(<PaystackButton {...componentProps} />);
+         if(email){
+          setOne(<PaystackButton {...componentProps} />);
+
+         }else{
+          alert("Please enter your email")}
+  
+         
       }else{  e.preventDefault();
         alert("Please enter your number")}
         }else{ e.preventDefault();
@@ -262,6 +262,8 @@ return(<div>
 <form id="Regform" >
 <input type="name" id="password" placeholder="Last Name"  onChange={(e)=>setLastname(e.target.value)} />
 <input type="phone" id="conpass" placeholder="Phone Number" onChange={(e)=>setNum(e.target.value)}  />
+<input type="email" id="email" placeholder="Email" onChange={(e)=>setEmaill(e.target.value)}  />
+
 <button type="submit" class="btn" onClick={(e)=>submit(e)}>Procede</button>
 </form></div>
 {one}

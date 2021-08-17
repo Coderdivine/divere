@@ -76,7 +76,7 @@ const get=async()=>{
   const res= await Axios.get("/orders").catch((err)=>{console.log(err)});
   if(res && res.data)setOrder(res.data);
 }*/
-const addup= localStorage.getItem("percento")?localStorage.getItem("percento"):300;
+const addup= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("percento")):300;
 
     let totalone = 0;
     carting.forEach((list)=>{
@@ -111,14 +111,11 @@ const subtotal= totalone + 300 +addup;
  setOne();
    
  }
- /*useEffect(()=>{
-  getthree();
-},[])*/
 
 
 useEffect((e) => {
   if(5==localStorage.getItem("counter")){
-    //e.preventDefault();
+   
     setTrigger(true);
   }else{setTrigger(false)}
 }, [trigger]);
@@ -185,9 +182,9 @@ const  cartedd= carting.map(listing =>
     const handledone=(e)=>{
       setDone(false)
     }
-    
-    const amount =totalone;
-    const email = localStorage.getItem("email");
+   const[emaill,setEmaill]=useState("");
+    const amount =subtotal;
+    const email = emaill;
     const addd= localStorage.getItem("address");
     const namee=localStorage.getItem("lastname");
     const phone = localStorage.getItem("num");
@@ -215,7 +212,14 @@ const  cartedd= carting.map(listing =>
   if(localStorage.getItem("address")){
        if(localStorage.getItem('lastname',)){
          if(localStorage.getItem('num')){
-         setOne(<PaystackButton {...componentProps} />);
+           
+        if(email){
+          setOne(<PaystackButton {...componentProps} />);
+
+        }else{
+          alert("Please enter your email")}
+ 
+        
         }else{  e.preventDefault();
           alert("Please enter your number")}
           }else{ e.preventDefault();
@@ -278,6 +282,8 @@ return(<div>
 <form id="Regform" >
 <input type="name" id="password" placeholder="Last Name"  onChange={(e)=>setLastname(e.target.value)} />
 <input type="phone" id="conpass" placeholder="Phone Number" onChange={(e)=>setNum(e.target.value)}  />
+<input type="email" id="email" placeholder="Email" onChange={(e)=>setEmaill(e.target.value)}  />
+
 <button type="submit" class="btn" onClick={(e)=>submit(e)}>Procede</button>
 </form></div>
 {one}

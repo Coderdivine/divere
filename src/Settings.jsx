@@ -1,3 +1,4 @@
+
 import React,{useState} from 'react';
 
 function Settings() {
@@ -10,7 +11,7 @@ function Settings() {
             <select value={percento} onChange={(e)=>{
               const selectedfood=e.target.value;
               setPercento(selectedfood);
-              localStorage.setItem("percento",percento);
+              localStorage.setItem("percento",JSON.parse(percento));
             }}>
               {value.map(list=>
           
@@ -27,7 +28,7 @@ function Settings() {
     return (
         <div>
          {ddd}
-         {localStorage.getItem("percento",percento)}
+        
         </div>
     );
 };

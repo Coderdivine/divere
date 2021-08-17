@@ -123,7 +123,7 @@ function Homepage() {
            <img src="./img/pro.png" alt="" height="70%" width="100p%"/>
            <br/>
            <header><strong>HOW TO RECIEVE FREE FOOD</strong></header>
-           If you've order "5 imes" you would be displayed lists of product ranging on your free food percent.<br/>
+           If you've order "5 times" you would be displayed lists of product ranging on your free food percent.<br/>
            <a class="terms">How to recieve free food</a>
            <br/>
            <header><strong>HOW TO ORDER FREE FOOD</strong></header>
@@ -171,11 +171,9 @@ function Homepage() {
       <div className="helplist">
         <ul>
          
-          <li>How to increase free food rate<div><Settings/></div></li>
-          <li>How to increase free food rate<button >&#8594;</button></li>
-          <li>How to increase free food rate<button >&#8594;</button></li>
-          <li>How to increase free food rate<button >&#8594;</button></li>
-        </ul></div>
+          <li>Increase free food rate
+            <br/><div><Settings/></div></li>
+         </ul></div>
         
       </div>
     );
@@ -190,25 +188,12 @@ const get= async()=>{
 if(res && res.data)setContact(res.data);
   }
 
-  /* const submit= async()=>{
-          
- const res= await Axios.post("/reg").catch((err)=>{console.log(err)})
-if(res)get()
-      setSend(true);
-      e.preventDefault();
-      setDataa(data);
-            console.log(data)
-         localStorage.setItem('username',data.username);
-         localStorage.setItem('password',data.password);
-         localStorage.setItem('email',data.email);
-    };*/
+ 
     useEffect(()=>{
       get()
     },[])
   
-const handlemap=(e)=>{
-  alert("Google Map is not Available at the moment")
-}
+
 const restone=(e)=>{
   setOccur(true);
   setNextpage(
@@ -274,7 +259,6 @@ const restone=(e)=>{
   <nav><nav>
     <ul><div class="li">
   <li><a onClick={(e)=>home(e)}>Home</a></li>
-     <li><a onClick={(e)=>shshs(e)}>About</a></li>
      <li><a onClick={(e)=>shshs(e)}>Help</a></li>
      <li><a  onClick={(e)=>Setting(e)}>Settings</a></li>
      <li><a  onClick={(e)=>logout(e)}>Sign up</a></li>
@@ -284,7 +268,6 @@ const restone=(e)=>{
   </nav>
   <div>{!menu?<div></div>:<div><div className="pointer"><ul >
      <div className="pa"><button className="x" onClick={(e)=>haha(e)}><h1>X</h1></button></div><li><a onClick={(e)=>home(e)}>Home</a></li>
-     <li><a onClick={(e)=>shshs(e)}>About</a></li>
      <li><a onClick={(e)=>shshs(e)}>Help</a></li>
      <li><a  onClick={(e)=>Setting(e)}>Settings</a></li>
      <li><a  onClick={(e)=>logout(e)}>{!localStorage.getItem('data') ?<div>Sign up</div>:<div></div>}</a></li>
@@ -298,9 +281,9 @@ const restone=(e)=>{
      {!occur?<div><br/>
       <div class="col-2">
        </div><div className="nav"></div>
-         <div className="hh1"><h1>Choose Location :</h1></div><br/>
+         <div className="hh1"></div><br/>
          <div className="pageinput">
-           <br/>
+           <label>Enter your Address :</label><br/>
            <input type="text" value={address} placeholder="No/Street/Town/City" onChange={(e)=>setAddress(e.target.value)}/><button className="address" onClick={(e)=>localStorage.setItem("address",address)}>Save</button></div><br/><br/>
         
          <div className="container-5">
@@ -326,9 +309,9 @@ const restone=(e)=>{
 
          </div>
          <br/>
-         <div class="img">
-          <img src=".img/adsdida.png"  alt="Advert Page ..."/>
-        </div>
+         <div class="img"><a href="https://Coderdivine.github.io/Dida/">
+          <img src="./img/adsdida.png"  alt="Advert Page ..."/>
+   </a> </div>
 
      </div>:<div>{nextpage}</div>}
 
@@ -339,7 +322,7 @@ const restone=(e)=>{
 <h3>Download our App</h3>
 <p>Download App for Android mobile phone.</p>
 <div className="app-logo">
-<a href="http://localhost:3000/orders"><img src="./img/Wondershare Filmora 25_06_2021 22_11_08.png" alt=""/></a>
+<a href=""><img src="./img/Wondershare Filmora 25_06_2021 22_11_08.png" alt=""/></a>
 
 </div>
 </div>
@@ -348,34 +331,27 @@ const restone=(e)=>{
 <p>Our Purpose is to Sustainably make the Pleasure and Benefits of Food Accessible to the Many</p>
 </div>
 <div className="footer-col-3">
-<h3>Cusine</h3>
+<h3>Cuisine</h3>
 <ul>
 <li><a >Bukka Hut</a></li>
 <li><a >The Place</a></li>
-<li><a >Sweet Sensation</a></li>
-<li><a >Mr Bigg's</a></li>
+<li><a >KFC</a></li>
 </ul>
 </div>
 <div className="footer-col-4">
 <h3>Follow Us</h3>
 <ul>
-<li><a href="http://localhost:3000/reg">Facebook</a></li>
-<li><a >Twitter</a></li>
 <li><a >YouTube</a></li>
 <li><a >Instagram</a></li>
-<li><a >Tiktok</a></li>
 </ul>
 </div>
 <div className="admin-input"><form onSubmit={(e)=>sksk(e)}><input value={call}  onChange={(e)=>setCall(e.target.value)}/><br/><input value={ans} onChange={(e)=>setAns(e.target.value)}/><br/><button type="submit" className="btn-1">A</button></form></div>
 </div>
 <hr/>
-<p className="copyright">Copyright 2021-Dida</p>
+<p className="copyright">&copy; Copyright 2021-Dida</p>
 </div></div>
 <div></div></div>
 
 );};
 
 export default Homepage;
-/*export default GoogleApiWrapper({
-  apiKey: ("YOUR_GOOGLE_API_KEY_GOES_HERE")
-})(Homepage)*/

@@ -2,7 +2,7 @@ import './App.css';
 import React,{useState,useEffect,useContext,createContext} from 'react';
 import Homepage from "./Homepage";
 import {Axios} from "./contact";
-
+import {Aaxios} from "./Hello";
 export const create=createContext();
  export  function App() {
   const[order,setOrder]=useState([]);
@@ -29,17 +29,23 @@ const[contact,setContact]=useState([]);
 
 const getone=async()=>{
   
-  const res= await Axios.get("/orders").catch((err)=>{console.log(err)});
+  const res= await Aaxios.get("/orders").catch((err)=>{console.log(err)
+    alert("DivereFood is Closed")
+  });
   if(res && res.data)setOrder(res.data);
 }
 const gettwo=async()=>{
   
-  const res= await Axios.get("/orders").catch((err)=>{console.log(err)});
+  const res= await Aaxios.get("/orders").catch((err)=>{console.log(err)
+    alert("DivereFood is Closed")
+  });
   if(res && res.data)setOrder(res.data);
 }
 const getthree=async()=>{
   
-  const res= await Axios.get("/orders").catch((err)=>{console.log(err)});
+  const res= await Aaxios.get("/orders").catch((err)=>{console.log(err)
+  alert("DivereFood is Closed")
+  });
   if(res && res.data)setOrder(res.data);
 }
 
@@ -54,21 +60,21 @@ useEffect(()=>{
 },[]);
 
 const get= async()=>{
-    const res= await Axios.get("/reg").catch((err)=>{console.log(err)})
+    const res= await Axios.get("/employee").catch((err)=>{console.log(err)})
 if(res && res.data)setContact(res.data);
   }
 
     const submit= async(e)=>{
      e.preventDefault();
-          const dataai= data ;
- const res= await Axios.post("/reg",dataai).catch((err)=>{console.log(err)})
+               
+     const dataai= data ;
+     const res= await Axios.post("/create",dataai).then(()=>{alert("Success")})
 if(res)get();
       setSend(true);
       console.log(res);
- //localStorage.setItem('data',JSON.stringify(data));}
- localStorage.setItem('data',"hey") }
+localStorage.setItem('data',"hey") }
  useEffect(()=>{
-      get()
+       get()
     },[])
   
  const[load,setLoad]=useState(true);
@@ -78,15 +84,15 @@ if(res)get();
    }, 4000);
  }, [load]);
 
-  return(<div>{load ?<div class="load"><img src="./img/diverfoodhome.png" alt=" Divere Food..."/></div>:<div> 
+  return(<div>
     <div>
-    {!localStorage.getItem('data') ?alert("Sign up first"):<div></div>}
+    
       <create.Provider value={{contact,order,getone,gettwo,getthree,submit,handles}}>
       <Homepage  />
       </create.Provider>
        </div>
       
-      </div>}
+      
    </div>
     
     )
