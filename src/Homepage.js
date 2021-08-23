@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useContext} from 'react';
-import {Axios} from "./contact";
+import {Aaxios} from "./Hello";
 import './App.css';
 import Settings from "./Settings";
 import App from "./App";
@@ -10,6 +10,7 @@ import Kfc from "./Kfc";
 import Theplace from "./Theplace";
 import Select from "./Select";
 import {create} from "./App";
+import About from './About';
 //import GooglePayButton from '@google-pay/button-react';
 //import {Map, InfoWindsow, Marker, GoogleApiWrapper} from 'google-maps-react';
 //import Myapp from "./Myapp";
@@ -184,7 +185,7 @@ function Homepage() {
 
  const[contact,setContact]=useState([]);
 const get= async()=>{
-    const res= await Axios.get("/reg").catch((err)=>{console.log(err)})
+    const res= await Aaxios.get("/reg").catch((err)=>{console.log(err)})
 if(res && res.data)setContact(res.data);
   }
 
@@ -193,7 +194,10 @@ if(res && res.data)setContact(res.data);
       get()
     },[])
   
-
+const [ok,setOk]=useState(false);
+const setOks=()=>{
+  setOk(true);
+};
 const restone=(e)=>{
   setOccur(true);
   setNextpage(
@@ -203,6 +207,11 @@ const restone=(e)=>{
       setOccur(true);
       setNextpage(
         <div><Kfc /></div>);
+    };
+    const about=(e)=>{
+      setOccur(true);
+      setNextpage(
+        <div><About/></div>);
     };
     const restthree=(e)=>{
       setOccur(true);
@@ -246,7 +255,7 @@ const restone=(e)=>{
     </div>
      </div></div></div>);
 };
-   
+ const greet=!localStorage.getItem("username")?"Everyone":localStorage.getItem("username");  
     return (
         <div className="popss">
             
@@ -260,6 +269,8 @@ const restone=(e)=>{
     <ul><div class="li">
   <li><a onClick={(e)=>home(e)}>Home</a></li>
      <li><a onClick={(e)=>shshs(e)}>Help</a></li>
+     <li><a onClick={(e)=>about(e)}>About</a></li>
+
      <li><a  onClick={(e)=>Setting(e)}>Settings</a></li>
      <li><a  onClick={(e)=>logout(e)}>Sign up</a></li>
 
@@ -269,6 +280,8 @@ const restone=(e)=>{
   <div>{!menu?<div></div>:<div><div className="pointer"><ul >
      <div className="pa"><button className="x" onClick={(e)=>haha(e)}><h1>X</h1></button></div><li><a onClick={(e)=>home(e)}>Home</a></li>
      <li><a onClick={(e)=>shshs(e)}>Help</a></li>
+     <li><a onClick={(e)=>about(e)}>About</a></li>
+  
      <li><a  onClick={(e)=>Setting(e)}>Settings</a></li>
      <li><a  onClick={(e)=>logout(e)}>{!localStorage.getItem('data') ?<div>Sign up</div>:<div></div>}</a></li>
        </ul></div></div>}</div>
@@ -281,11 +294,27 @@ const restone=(e)=>{
      {!occur?<div><br/>
       <div class="col-2">
        </div><div className="nav"></div>
-         <div className="hh1"></div><br/>
+         <div className="hh1"></div>
+         <div class="col-45">{!localStorage.getItem("username")?<div></div>:
+          <div class="col-45">
+          <h1>Good day "{greet}",your welcome to Diverefood.</h1>
+          <small>Greetings from Shaw.</small>
+        </div>
+}
+         </div>
+         <div class="col-45">{!ok?<div>
+          <small>Would you like to learn how<br/> to get free food from Diverefood 
+              <button onClick={(e)=>shshs(e)}>YES</button> <button onClick={()=>setOks()}>NO</button> <small> Option from shaw.</small>
+           </small>
+         </div>:<div></div>}
+          
+         </div>
+         <br/>
          <div className="pageinput">
            <label>Enter your Address :</label><br/>
            <input type="text" value={address} placeholder="No/Street/Town/City" onChange={(e)=>setAddress(e.target.value)}/><button className="address" onClick={(e)=>localStorage.setItem("address",address)}>Save</button></div><br/><br/>
-        
+        <div class="rest-3"><h2><i>Resturant for all</i></h2><hr/></div><br/>
+        <br/>
          <div className="container-5">
            <h1>BUKKA HUT</h1>
           <hr id="Indi" />

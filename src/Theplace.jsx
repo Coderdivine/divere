@@ -224,6 +224,9 @@ if(localStorage.getItem("address")){
           
 return(<div>
   {red ?<div><button onClick={(e)=>Sand(e)} className="addr">Back</button><div><div>
+  <div class="col-45">
+     <h1>LUNCH BOX</h1>
+     </div>
       <div class="small-container cart-page">
    <table>
    <tr>
@@ -305,7 +308,7 @@ return(<div>
 
 </div></div> </div>:
 <div> 
-        <div className="pagein"><input value={searchitem} onChange={(e)=>setSearchitem(e.target.value)} placeholder="search..."/> <button onClick={(e)=>Handle(e)} className="addr">View Cart <br/>"The Place"({cart.length})</button></div>
+        <div className="pagein"><input value={searchitem} onChange={(e)=>setSearchitem(e.target.value)} placeholder="search..."/> <button onClick={(e)=>Handle(e)} className="addr">View The Place<br/>"Lunch Box"({cart.length})</button></div>
 
 <br/><div class="none"></div><br/>
 {kfclist}</div>}

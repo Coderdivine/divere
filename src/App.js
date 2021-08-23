@@ -60,15 +60,18 @@ useEffect(()=>{
 },[]);
 
 const get= async()=>{
-    const res= await Aaxios.get("/employee").catch((err)=>{console.log(err)})
-if(res && res.data)setContact(res.data);
+    const res= await Aaxios.get("/employee").then((response)=>{
+      setContact(response.data);
+    });
+    if(res && res.data)setContact(res.data);
+
   }
 
     const submit= async(e)=>{
      e.preventDefault();
                
      const dataai= data ;
-     const res= await Axios.post("/create",dataai).then(()=>{alert("Success")})
+     const res= await Aaxios.post("/create",dataai).then(()=>{alert("Success")})
 if(res)get();
       setSend(true);
       console.log(res);
