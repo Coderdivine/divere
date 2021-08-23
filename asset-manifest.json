@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/divere/static/css/main.6bbeea5f.chunk.css",
-    "main.js": "/divere/static/js/main.c52db685.chunk.js",
-    "main.js.map": "/divere/static/js/main.c52db685.chunk.js.map",
+    "main.css": "/divere/static/css/main.59889716.chunk.css",
+    "main.js": "/divere/static/js/main.368d27f3.chunk.js",
+    "main.js.map": "/divere/static/js/main.368d27f3.chunk.js.map",
     "runtime-main.js": "/divere/static/js/runtime-main.90fa874e.js",
     "runtime-main.js.map": "/divere/static/js/runtime-main.90fa874e.js.map",
     "static/js/2.6502b6bb.chunk.js": "/divere/static/js/2.6502b6bb.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.62dc5a5b.chunk.js": "/divere/static/js/3.62dc5a5b.chunk.js",
     "static/js/3.62dc5a5b.chunk.js.map": "/divere/static/js/3.62dc5a5b.chunk.js.map",
     "index.html": "/divere/index.html",
-    "static/css/main.6bbeea5f.chunk.css.map": "/divere/static/css/main.6bbeea5f.chunk.css.map",
+    "static/css/main.59889716.chunk.css.map": "/divere/static/css/main.59889716.chunk.css.map",
     "static/js/2.6502b6bb.chunk.js.LICENSE.txt": "/divere/static/js/2.6502b6bb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.90fa874e.js",
     "static/js/2.6502b6bb.chunk.js",
-    "static/css/main.6bbeea5f.chunk.css",
-    "static/js/main.c52db685.chunk.js"
+    "static/css/main.59889716.chunk.css",
+    "static/js/main.368d27f3.chunk.js"
   ]
 }
