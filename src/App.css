@@ -706,6 +706,9 @@ text-align:right;
 padding:50px 0;
 background:radial-gradient(#fff,#ffd8d8);
 }
+.conts{
+  border:1px solid brown;
+}
 .form-container{
 background:#fff;
 width:300px;

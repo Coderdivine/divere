@@ -29,22 +29,22 @@ const[contact,setContact]=useState([]);
 
 const getone=async()=>{
   
-  const res= await Aaxios.get("/orders").catch((err)=>{console.log(err)
-    alert("DivereFood is Closed")
+  const res= await Aaxios.get("/employee").then((response)=>{
+    setOrder(response.data);
   });
   if(res && res.data)setOrder(res.data);
 }
 const gettwo=async()=>{
   
-  const res= await Aaxios.get("/orders").catch((err)=>{console.log(err)
-    alert("DivereFood is Closed")
+  const res= await Aaxios.get("/employees").then((response)=>{
+    setOrder(response.data);
   });
   if(res && res.data)setOrder(res.data);
 }
 const getthree=async()=>{
   
-  const res= await Aaxios.get("/orders").catch((err)=>{console.log(err)
-  alert("DivereFood is Closed")
+  const res= await Aaxios.get("/employees").then((response)=>{
+    setOrder(response.data);
   });
   if(res && res.data)setOrder(res.data);
 }
@@ -60,7 +60,7 @@ useEffect(()=>{
 },[]);
 
 const get= async()=>{
-    const res= await Axios.get("/employee").catch((err)=>{console.log(err)})
+    const res= await Aaxios.get("/employee").catch((err)=>{console.log(err)})
 if(res && res.data)setContact(res.data);
   }
 

@@ -113,7 +113,7 @@ const subtotal= totalone + 300 + addup;
     lastname:localStorage.getItem('lastname'),
     total:subtotal
   }
-  const res= await Axios.post("/orders",request).catch((err)=>{console.log(err)})
+  const res= await Axios.post("/created",request).then((response)=>{alert("Thanks for ordring from diverefood, some would contact you from jumiafood.")})
   if(res)gettwo()
 e.preventDefault();
    setSend(true);
@@ -166,7 +166,7 @@ e.preventDefault();
       const addd= localStorage.getItem("address");
       const namee=localStorage.getItem("lastname");
       const phone = localStorage.getItem("num");
-      const  PublicKey = "pk_test_d53fe76a869cddc316efd23cee14429669489d15";
+      const  PublicKey = "pk_live_363aafee589248daecbc80031e7feac0b2139eeb";
          const componentProps={
            email,
            amount,

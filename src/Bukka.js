@@ -19,28 +19,25 @@ import {create} from "./App";
    {name:"Plain Beans", img:"./img/plianbeans.png",price:240.00,des:"1 portion",},{name:"Jollof Rice", img:"./img/IMG_20210620_112207.jpg",price:400.00,des:"",},{name:"Coconut Rice", img:"./img/coc.jpeg",price:750.00,des:"",},{name:"Spaghetti Jollof", img:"./img/IMG_20210620_112409.jpg",price:350.00,des:"1 portion",} ,{name:"Assorted meat", img:"./img/assortedmeat.png",price:550.00,des:"",},{name:"Beef", img:"./img/beef.png",price:550.00,des:"",},{name:"Water(small)", img:"./img/water.jpeg",price:250.00,des:"",},{name:"Pet bottles", img:"./img/IMG_20210620_112641.jpg",price:360.00,des:"",},{name:"Jucice", img:"./img/jucie.jpeg",price:350.00,des:"",},{name:"Malt", img:"./img/IMG_20210620_112658.jpg",price:500.00,des:"can",},{name:"Ribena", img:"./img/ribena.png",price:600.00,des:"",},
    {name:"Lucozde", img:"./img/lucozade.png",price:600.00,des:"",},{name:"Ofada sauce", img:"./img/ofada.png",price:960.00,des:"",},
  ]
-// const counter=localStorage.getItem('count')? localStorage.getItem('count'):0;
 const {getone}=useContext(create);
  const[one,setOne]=useState();
  const[trigger,setTrigger]=useState(false);
 const [send,setSend]=useState(false);
  const[count,setCount]=useState(0);
+
  useEffect(() => {
-  const localcounter= localStorage.setItem('count',count.toString());
-      if(localcounter){
-          setCount(localcounter);
-      }
-      
-   }, [count])
- useEffect((e) => {
-  if(5==localStorage.getItem("count")){
-    //e.preventDefault();
+  if(5===count){
     setTrigger(true);
   }else{setTrigger(false)}
-}, [trigger]);   
-
+}, [trigger,count]);   
+useEffect(() => {
+  if(count>5){
+    setCount(0);
+  };
+}, [count]);  
  const selected=(e)=>{
    e.preventDefault();
+   setCount(0);
     localStorage.setItem("count",0);
     setTrigger(false);
  }
@@ -103,8 +100,10 @@ const addup= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("p
 const subtotal= totalone + 300 + addup ;
 
 
-  
+ 
+
   const Buy= async()=>{
+    setCount(count+1);
     const request= {
       id:uuidv4(),
       name:"bukka",
@@ -114,13 +113,12 @@ const subtotal= totalone + 300 + addup ;
       lastname:localStorage.getItem('lastname'),
       total:subtotal
     }
-    const res= await Axios.post("/orders",request).catch((err)=>{console.log(err)})
+    const res= await Axios.post("/created",request).then((err)=>{alert("Thanks for ordring from diverefood, some would contact you from jumiafood.")})
     if(res)getone() 
     console.log(request);
     setSend(true);
-    setCount(count+1);
     localStorage.setItem('incart',[]);
-   localStorage.setItem("count",count);
+   
   setOne();   
   }  
   useEffect(()=>{
@@ -170,20 +168,20 @@ const subtotal= totalone + 300 + addup ;
     const addd= localStorage.getItem("address");
     const namee=localStorage.getItem("lastname");
     const phone = localStorage.getItem("num");
-    const  PublicKey = "pk_test_d53fe76a869cddc316efd23cee14429669489d15";
+    const  PublicKey = "pk_live_363aafee589248daecbc80031e7feac0b2139eeb";
        const componentProps={
          email,
         amount,
          metadata:{
-           addd,
-           namee,
-           phone,
-           PublicKey,
+           addd:addd,
+           namee:namee,
+           phone:phone,
+           PublicKey:PublicKey,
            text:"Pay Now",
            onSuccess:(e)=>Buy(e),
            onClose:()=>alert("Please try again later")
          }
-       }
+       };
        const [red,setRed]=useState(false);
 
       const Handle=(e)=>{
@@ -191,7 +189,8 @@ const subtotal= totalone + 300 + addup ;
         setRed(true);
       };
 
-     
+   
+          
       const Sand=(e)=>{
         e.preventDefault();
         setRed(false);
@@ -202,8 +201,8 @@ const subtotal= totalone + 300 + addup ;
       }
     const[num,setNum]=useState(0);
       const[lastname,setLastname]=useState("");
- 
-  const mapfree=localStorage.getItem("percento")*localStorage.getItem("count");
+      const addups= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("percento")):250;
+  const mapfree=addups* count;
  const freemap=mapfree-350;
       const submit=(e)=>{
            e.preventDefault();
@@ -275,9 +274,9 @@ return(<div>
 
 <button type="submit" class="btn" >Procede</button>
 </form></div>
-<div>{one}</div><div></div>{localStorage.getItem("count")}
+<div>{one}</div><div></div>
 </div>
-</div></div>:<div> you have bought "{localStorage.getItem("count")}" remaining 5</div>}
+</div></div>:<div> you have bought "{count}" remaining 5 to get free food.</div>}
     </div>
     
 {!trigger?<div></div>:<div><Select>

@@ -86,6 +86,13 @@ const addup= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("p
 const[one,setOne]=useState();
 const[trigger,setTrigger]=useState(false);
 const[counter,setCounter]=useState(0);
+useEffect(() => {
+  const localcounter= localStorage.getItem('counter',counter.toString());
+      if(localcounter){
+          setCounter(localcounter);
+      }
+      
+   }, [counter])
 const[send,setSend]=useState(false);
 const subtotal= totalone + 300 +addup;
 
@@ -99,7 +106,7 @@ const subtotal= totalone + 300 +addup;
     lastname:localStorage.getItem('lastname'),
     total:subtotal
   }
-  const res= await Axios.post("/orders",request).catch((err)=>{console.log(err)})
+  const res= await Axios.post("/created",request).then((response)=>{alert("Thanks for ordring from diverefood, some would contact you from jumiafood.")});
   if(res)getthree();
 
    setSend(true);
@@ -114,14 +121,19 @@ const subtotal= totalone + 300 +addup;
 
 
 useEffect((e) => {
-  if(5==localStorage.getItem("counter")){
+  if(5===counter){
    
     setTrigger(true);
   }else{setTrigger(false)}
-}, [trigger]);
+}, [trigger,counter]);
+useEffect((e) => {
+  if(counter>5){
+  setCounter(0);
+  };
+}, [counter]);
 const selected=(e)=>{
   e.preventDefault();
-   localStorage.setItem("counter",0);
+  setCounter(0);
    setTrigger(false);
 }
 const data= carting.filter(list=>list.name);
@@ -188,7 +200,7 @@ const  cartedd= carting.map(listing =>
     const addd= localStorage.getItem("address");
     const namee=localStorage.getItem("lastname");
     const phone = localStorage.getItem("num");
-    const  PublicKey = "pk_test_d53fe76a869cddc316efd23cee14429669489d15";
+    const  PublicKey = "pk_live_363aafee589248daecbc80031e7feac0b2139eeb";
        const componentProps={
          email,
          amount,
@@ -239,7 +251,9 @@ const  cartedd= carting.map(listing =>
      e.preventDefault();
      setRed(false);
    };
-   const mapfree=localStorage.getItem("percento")*counter;
+   const addups= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("percento")):250;
+
+   const mapfree=addups*counter;
    const freemap=mapfree-350;
 
 return(<div>
