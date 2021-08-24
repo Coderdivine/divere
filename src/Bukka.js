@@ -173,10 +173,10 @@ const subtotal= totalone + 300 + addup ;
          email,
         amount,
          metadata:{
-           addd:addd,
-           namee:namee,
-           phone:phone,
-           PublicKey:PublicKey,
+           addd,
+           namee,
+           phone,
+           PublicKey,
            text:"Pay Now",
            onSuccess:(e)=>Buy(e),
            onClose:()=>alert("Please try again later")
@@ -214,7 +214,7 @@ const subtotal= totalone + 300 + addup ;
            if(!email){
        alert("Please Enter your Email")
            }else{
-            setOne(<button class="btn" onClick={(e)=>Buy(e)}>Buy</button>);
+            setOne(<PaystackButton className="btn" {...componentProps}/>);
   
            }
         }else{  e.preventDefault();
