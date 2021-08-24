@@ -203,7 +203,7 @@ if(localStorage.getItem("address")){
      if(localStorage.getItem('lastname',)){
        if(localStorage.getItem('num')){
          if(email){
-          setOne(<PaystackButton {...componentProps} />);
+          setOne(<PaystackButton className="btn" {...componentProps} />);
 
          }else{
           alert("Please enter your email")}

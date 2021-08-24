@@ -226,7 +226,7 @@ const  cartedd= carting.map(listing =>
          if(localStorage.getItem('num')){
            
         if(email){
-          setOne(<PaystackButton {...componentProps} />);
+          setOne(<PaystackButton  class="btn"{...componentProps} />);
 
         }else{
           alert("Please enter your email")}
