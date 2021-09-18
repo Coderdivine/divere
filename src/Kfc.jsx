@@ -70,12 +70,7 @@ localStorage.setItem('carting',JSON.stringify(carting));
 const removefromcart=(liststoremove)=>{
   setCarting(carting.filter (listing=>listing !==liststoremove));   
 };
-/*const [order,setOrder]=useState([])
-const get=async()=>{
-  
-  const res= await Axios.get("/orders").catch((err)=>{console.log(err)});
-  if(res && res.data)setOrder(res.data);
-}*/
+
 const addup= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("percento")):300;
 
     let totalone = 0;
@@ -85,18 +80,12 @@ const addup= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("p
 
 const[one,setOne]=useState();
 const[trigger,setTrigger]=useState(false);
-const[counter,setCounter]=useState(0);
-useEffect(() => {
-  const localcounter= localStorage.getItem('counter',counter.toString());
-      if(localcounter){
-          setCounter(localcounter);
-      }
-      
-   }, [counter])
+const[counter,setCounter]=useState(null);
 const[send,setSend]=useState(false);
 const subtotal= totalone + 300 +addup;
 
  const Buy= async(e)=>{
+   setCounter(counter +1)
   const request= {
     id:uuidv4(),
     name:"KFC",
@@ -111,49 +100,35 @@ const subtotal= totalone + 300 +addup;
 
    setSend(true);
   e.preventDefault();
-  setCounter(counter+1);
   setSend(true);
   localStorage.setItem('carting',[]);
- localStorage.setItem("counter",counter);
  setOne();
    
  }
-
-
-useEffect((e) => {
-  if(5===counter){
-   
-    setTrigger(true);
-  }else{setTrigger(false)}
-}, [trigger,counter]);
-useEffect((e) => {
-  if(counter>5){
-  setCounter(0);
-  };
-}, [counter]);
-const selected=(e)=>{
-  e.preventDefault();
-  setCounter(0);
-   setTrigger(false);
-}
-const data= carting.filter(list=>list.name);
-const dataa= carting.filter(list=>list.price);
-useEffect(()=>{
- if(send){
-   axios.post("https://loaclhost:3000/orders",{
-     names:data,
-     prices:dataa,
-     address:localStorage.getItem("address"),
-     num:localStorage.getItem("num"),
-     lastname:localStorage.getItem("lastname")
-   
-   }).then(res=>{
-     console.log(res.data);});
+useEffect(() => {
+ if(counter!==null){
+   localStorage.setItem("counter",counter.toString())
  }
- setSend(false);
- 
- },[send])
- 
+}, [counter])
+
+ useEffect(() => {
+  const localcounts=localStorage.getItem("counter")
+  if(localcounts){
+    setCounter(Number(localcounts));
+  };
+ }, []);
+ useEffect(() => {
+  if(counter==5){
+ setTrigger(true)
+  }
+ }, [counter]);
+ useEffect(() => {
+  if(counter>5){
+    setTrigger(false);
+    setCounter(null);
+  }
+ }, [counter]);
+
  useEffect(()=>{
   localStorage.setItem('cart',JSON.stringify(carting));
 },[carting]);
@@ -226,7 +201,7 @@ const  cartedd= carting.map(listing =>
          if(localStorage.getItem('num')){
            
         if(email){
-          setOne(<PaystackButton  class="btn"{...componentProps} />);
+          setOne(<button className="btn" onClick={(e)=>Buy(e)}></button>);
 
         }else{
           alert("Please enter your email")}
@@ -253,8 +228,82 @@ const  cartedd= carting.map(listing =>
    };
    const addups= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("percento")):250;
 
-   const mapfree=addups*counter;
+   const mapfree= addups * counter;
    const freemap=mapfree-350;
+
+   const rr=localStorage.getItem('savedd')==[]?null:null
+   const[saved,setSaved]=useState(rr);
+   useEffect(() =>{
+    const cartlistss=JSON.parse(localStorage.getItem('savedd'));
+     if(cartlistss){
+       setSaved(cartlistss)
+     }
+  }, []);
+   const kvr= <div>{productkfc.filter((v,s)=>v.price <= freemap).map(v=> 
+     <div>
+     <div class="small-container cart-page">
+    <table>
+    <tr>
+    <td>
+      <div class="cart-info">
+        <img src={v.img} alt={v.name}/>
+             <div>
+             <div class="price">
+        <p>{v.des}</p>
+        <small>{v.name}</small>
+        </div>
+        <br/>
+        <button class="btn-danger" onClick={(e)=>selected(v)}>select</button>     </div></div>
+         
+    </td>
+    <td><input type="number" value="1" class="cart-quantity-price"/></td>
+    <td>{v.price}</td>
+    </tr>
+    <tr>
+    <td>
+    
+         </td></tr></table></div>
+        
+    </div>)}</div>
+         const[oneof,setOneof]=useState(false);
+
+   const selected=(v)=>{
+     setSaved([{...saved,...v}]);
+     localStorage.setItem('savedd',JSON.stringify(saved));
+
+   }
+   useEffect(() => {
+    localStorage.setItem("savedd",JSON.stringify(saved));
+   }, [saved])
+   const selectedd=(v)=>{
+    setOneof(true); }
+    const RunGetFor= async(e)=>{
+      e.preventDefault();
+      if(lastname.length > 3 && num.length>10){
+      const req= {
+       address:localStorage.getItem('address'),
+       num:num,
+       lastname:lastname
+     }
+     setSaved(null)
+     setOneof(false);
+       setCounter(0);
+      setTrigger(false);
+      localStorage.setItem('savedd',null);
+     const res= await Axios.post("/creating",req).then(()=>{
+      alert(`Your is being processed ${lastname},you would get a call from jumia food.`)
+      
+      setCounter(0);
+     setTrigger(false);
+     localStorage.setItem('savedd',null);
+     setOneof(false);
+     })
+  
+    }else{
+       alert("Please enter a valid infomation")
+     }
+    
+        };
 
 return(<div>
 {red ?<div><button onClick={(e)=>Sand(e)} className="addr">Back</button><div><div>
@@ -301,13 +350,20 @@ return(<div>
 <input type="phone" id="conpass" placeholder="Phone Number" onChange={(e)=>setNum(e.target.value)}  />
 <input type="email" id="email" placeholder="Email" onChange={(e)=>setEmaill(e.target.value)}  />
 
-<button type="submit" class="btn" onClick={(e)=>submit(e)}>Procede</button>
+<button type="submit" class="btn" onClick={(e)=>submit(e)}>Procced</button>
 </form></div>
 {one}
-</div><div>{localStorage.getItem("counting")}{counter}</div><div>{!trigger?<div></div>:<div><Select><h1>FREE FOOD LISTS</h1>
+</div><div>{counter}</div><div>{!trigger?<div></div>:<div><Select>
+  
+  {saved==null?<div>
+  <h1>FREE FOOD LISTS</h1>
   <hr id="Indi" />
-    <div>{productkfc.filter((v,s)=>v.price <= freemap).map(v=> 
-      <div>
+  <br/>
+    {kvr}</div>:<div><div>
+      <h1>SAVED FREE FOOD </h1>
+        <hr id="Indi" />
+      {saved!==null && saved.map(v=> 
+ <div>
  <div class="small-container cart-page">
 <table>
 <tr>
@@ -320,32 +376,40 @@ return(<div>
     <small>{v.name}</small>
     </div>
     <br/>
-    <button class="btn-danger" onClick={(e)=>selected(e)}>select</button>     </div></div>
+    <button class="btn" onClick={(e)=>selectedd()}>Buy Now</button>     </div></div>
      
 </td>
-<td><input type="number" value="1" class="cart-quantity-price"/></td>
+<td><small>Saved</small></td>
 <td>{v.price}</td>
 </tr>
 <tr>
 <td>
 
      </td></tr></table></div>
-    
-</div>        )}</div>
-  </Select></div>}
+  
+</div> 
+    )}</div></div>}
+   
+  </Select></div>}<div>{!oneof?<div></div>:<div className="account-page"><div class="container">
+              <form id="Regform">
+                <input value={lastname}   onChange={(e)=>setLastname(e.target.value)} />
+                <input value={num}        onChange={(e)=>setNum(e.target.value)} />
+                <input value={emaill}     onChange={(e)=>setEmaill(e.target.value)} />
+                 <br/><strong>Address: {localStorage.getItem("address")}</strong>
+                 <hr/>
+                  <small>This address is automatically selected from address input</small>
+                  <button class="btn" onClick={(e)=>RunGetFor(e)}>Get</button>
+              </form>
+            </div></div>}</div>
+  {saved==null?<div>
+      <i><strong><small><hr/>No saved free food<hr/></small></strong></i>
+    </div>:<div>
+     <i><strong><small><hr/>You can only save one free food<hr/></small></strong></i>
+</div>}
 </div>
-</div></div>:<div>you have bought "{localStorage.getItem("counter")}" remaining 5</div>}
+</div></div>:<div>{counter==5?<div>Free food is Available :)</div>:<div>you have bought "{localStorage.getItem("counter")}" remaining 5</div>}</div>}
 </div>
-
-
-
-
-</div></div> </div>
- 
-
-
- 
- :
+</div></div> </div> :
 <div> 
       <div className="pagein"><input value={searchitem} onChange={(e)=>setSearchitem(e.target.value)} placeholder="search..."/> <button onClick={(e)=>Handle(e)} className="addr">View KFC<br/>"Lunch Box"({carting.length})</button></div>
 

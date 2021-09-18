@@ -12,6 +12,17 @@
           </div>
 //
  //
+   setOneof(<div>
+          <form>
+            <input value={lastname} onChange={(e)=>setLastname(e.target.value)} placeholder="Lastname"/>
+            <input value={num} onChange={(e)=>setNum(e.target.value)} placeholder="Number"/>
+            <input value={emaill} onChange={(e)=>setEmaill(e.target.value)} placeholder="Email"/>
+             <strong>Address: {localStorage.getItem("address")}</strong>
+             <hr/>
+              <small>This address is automatically selected from address input</small>
+              <button class="btn" onClick={(e)=>RunGetFor(e)}>Get</button>
+          </form>
+        </div>);
   const fetchData= async ()=>{
        const result=await axios.get(
        "http://loaclhost:3000/reg"

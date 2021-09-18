@@ -29,21 +29,21 @@ const[contact,setContact]=useState([]);
 
 const getone=async()=>{
   
-  const res= await Aaxios.get("/employee").then((response)=>{
+  const res= await Aaxios.get("/employeed").then((response)=>{
     setOrder(response.data);
   });
   if(res && res.data)setOrder(res.data);
 }
 const gettwo=async()=>{
   
-  const res= await Aaxios.get("/employees").then((response)=>{
+  const res= await Aaxios.get("/employeed").then((response)=>{
     setOrder(response.data);
   });
   if(res && res.data)setOrder(res.data);
 }
 const getthree=async()=>{
   
-  const res= await Aaxios.get("/employees").then((response)=>{
+  const res= await Aaxios.get("/employeed").then((response)=>{
     setOrder(response.data);
   });
   if(res && res.data)setOrder(res.data);
@@ -59,13 +59,6 @@ useEffect(()=>{
   getthree();
 },[]);
 
-const get= async()=>{
-    const res= await Aaxios.get("/employee").then((response)=>{
-      setContact(response.data);
-    });
-    if(res && res.data)setContact(res.data);
-
-  }
 
     const submit= async(e)=>{
      e.preventDefault();
@@ -78,7 +71,15 @@ if(res)get();
 localStorage.setItem('data',"hey") }
  useEffect(()=>{
        get()
-    },[])
+    },[]);
+    const get= async()=>{
+      const res= await Aaxios.get("/employee").then((response)=>{
+        setContact(response.data);
+      });
+      if(res && res.data)setContact(res.data);
+  
+    };
+  
   
  const[load,setLoad]=useState(true);
  useEffect(() => {

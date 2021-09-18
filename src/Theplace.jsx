@@ -26,24 +26,13 @@ function Theplace() {
     const {gettwo}=useContext(create);
     const[one,setOne]=useState();
 const[send,setSend]=useState(false);
-    const[counts,setCounts]=useState(0);
+    
     const cartlists= localStorage.getItem('cart')?JSON.parse(localStorage.getItem('cart')):[]
     const[cart,setCart]=useState(cartlists);
-
-   const[trigger,setTrigger]=useState(false);
+    const[counts,setCounts]=useState(null);
+    const[trigger,setTrigger]=useState(false);
     
-   useEffect((e) => {
-    if(5==localStorage.getItem("counts")){
-      //e.preventDefault();
-      setTrigger(true);
-    }else{setTrigger(false)}
-  }, [trigger]);
-   
-    const selected=(e)=>{
-      e.preventDefault();
-       localStorage.setItem("counts",0);
-       setTrigger(false);
-    }
+    
         
     const [searchitem,setSearchitem]=useState("");
 
@@ -79,16 +68,12 @@ const[send,setSend]=useState(false);
          </td></tr></table></div></div>
       </div>)
       
-
-
- const addtocart=(list)=>{
+const addtocart=(list)=>{
     setCart([...cart,{...list}]);
  localStorage.setItem('cart',JSON.stringify(cart));
  
      };
-     
- 
-  const removefromcart=(liststoremove)=>{
+const removefromcart=(liststoremove)=>{
     setCart(cart.filter (list=>list !==liststoremove));   
   };
   
@@ -102,8 +87,27 @@ cart.forEach((list)=>{
 })
 const subtotal= totalone + 300 + addup;
 
+useEffect(() => {
+ const localcounts=localStorage.getItem("counts")
+ if(localcounts){
+   setCounts(Number(localcounts));
+ };
+}, []);
+useEffect(() => {
+ if(counts==5){
+setTrigger(true)
+ }
+}, [counts]);
+useEffect(() => {
+ if(counts>5){
+   setTrigger(false);
+   setCounts(null);
+ }
+}, [counts])
+
 
  const Buy=async(e)=>{
+  setCounts(counts+1);
   const request= {
     id:uuidv4(),
     name:"THE PLACE",
@@ -117,13 +121,15 @@ const subtotal= totalone + 300 + addup;
   if(res)gettwo()
 e.preventDefault();
    setSend(true);
-  setCounts(counts+1);
- localStorage.setItem("counts",counts);
+ 
   localStorage.setItem('cart',[]);
  setOne();
     
  }
- 
+ useEffect(() => {
+   if(counts!==null){
+  localStorage.setItem("counts",counts.toString())};
+ }, [counts])
  useEffect(()=>{
    localStorage.setItem('cart',JSON.stringify(cart));
  },[cart]);
@@ -188,7 +194,9 @@ e.preventDefault();
        e.preventDefault();
        setRed(false);
      };
-     const mapfree=localStorage.getItem("percento")*counts;
+     const addups= localStorage.getItem("percento")?JSON.parse(localStorage.getItem("percento")):250;
+
+     const mapfree= addups * counts;
      const freemap=mapfree-350;
       const handledone=(e)=>{
         setDone(false)
@@ -203,7 +211,7 @@ if(localStorage.getItem("address")){
      if(localStorage.getItem('lastname',)){
        if(localStorage.getItem('num')){
          if(email){
-          setOne(<PaystackButton className="btn" {...componentProps} />);
+          setOne(<button className="btn" onClick={(e)=>Buy(e)}></button>);
 
          }else{
           alert("Please enter your email")}
@@ -221,6 +229,84 @@ if(localStorage.getItem("address")){
        
       };
       const[done,setDone]=useState(true);
+
+      
+      const rr=localStorage.getItem('saveddd')==[]?null:null
+      const[saved,setSaved]=useState(rr); 
+      useEffect(() =>{
+       const cartlistss=JSON.parse(localStorage.getItem('saveddd'));
+        if(cartlistss){
+          setSaved(cartlistss)
+        }
+     }, []);
+   const kvr= <div>{productplace.filter((v,s)=>v.price <= freemap).map(v=> 
+     <div>
+     <div class="small-container cart-page">
+    <table>
+    <tr>
+    <td>
+      <div class="cart-info">
+        <img src={v.img} alt={v.name}/>
+             <div>
+             <div class="price">
+        <p>{v.des}</p>
+        <small>{v.name}</small>
+        </div>
+        <br/>
+        <button class="btn-danger" onClick={(e)=>selected(v)}>select</button>     </div></div>
+         
+    </td>
+    <td><input type="number" value="1" class="cart-quantity-price"/></td>
+    <td>{v.price}</td>
+    </tr>
+    <tr>
+    <td>
+    
+         </td></tr></table></div>
+        
+    </div>)}</div>
+   const[oneof,setOneof]=useState(false);
+   const selected=(vid)=>{
+     setSaved([{...saved,...vid}]);
+     localStorage.setItem('saveddd',JSON.stringify(saved));
+     
+      };
+     useEffect(() => {
+      localStorage.setItem("saveddd",JSON.stringify(saved));
+     }, [saved])
+        const selectedd=()=>{
+       setOneof(true);
+
+   }
+   const RunGetFor= async(e)=>{
+    e.preventDefault();
+    if(lastname.length > 3 && num.length>10){
+    const req= {
+     address:localStorage.getItem('address'),
+     num:num,
+     lastname:lastname
+   }
+   setSaved(null)
+   setOneof(false);
+     setCounts(0);
+    setTrigger(false);
+    localStorage.setItem('saveddd',null);
+   const res= await Axios.post("/creating",req).then(()=>{
+    alert(`Your is being processed ${lastname},you would get a call from jumia food.`)
+    
+    setCounts(0);
+   setTrigger(false);
+   localStorage.setItem('saveddd',null);
+   setOneof(false);
+   })
+
+  }else{
+     alert("Please enter a valid infomation")
+   }
+  
+      };
+
+
           
 return(<div>
   {red ?<div><button onClick={(e)=>Sand(e)} className="addr">Back</button><div><div>
@@ -267,16 +353,22 @@ return(<div>
 <input type="phone" id="conpass" placeholder="Phone Number" onChange={(e)=>setNum(e.target.value)}  />
 <input type="email" id="email" placeholder="Email" onChange={(e)=>setEmaill(e.target.value)}  />
 
-<button type="submit" class="btn" onClick={(e)=>submit(e)}>Procede</button>
+<button type="submit" class="btn" onClick={(e)=>submit(e)}>Procced</button>
 </form></div>
 {one}
 </div><div>{localStorage.getItem("counts")}</div>
-</div></div>:<div>you have bought "{localStorage.getItem("counts")}" remaining 5</div>}
+</div></div>:<div>{counts==5?<div>Free food is Available :)</div>:<div>you have bought "{localStorage.getItem("counts")}" remaining 5</div>}</div>}
 </div><div>{!trigger?<div></div>:<div><Select>
+  
+  {saved==null?<div>
   <h1>FREE FOOD LISTS</h1>
   <hr id="Indi" />
-    <div>{productplace.filter((v,s)=>v.price <= freemap).map(v=> 
-      <div>
+  <br/>
+    {kvr}</div>:<div><div>
+      <h1>SAVED FREE FOOD </h1>
+        <hr id="Indi" />
+      {saved!==null && saved.map(v=> 
+ <div>
  <div class="small-container cart-page">
 <table>
 <tr>
@@ -289,19 +381,37 @@ return(<div>
     <small>{v.name}</small>
     </div>
     <br/>
-    <button class="btn-danger" onClick={(e)=>selected(e)}>select</button>     </div></div>
+    <button class="btn" onClick={(e)=>selectedd()}>Buy Now</button>     </div></div>
      
 </td>
-<td><input type="number" value="1" class="cart-quantity-price"/></td>
+<td><small>Saved</small></td>
 <td>{v.price}</td>
 </tr>
 <tr>
 <td>
 
      </td></tr></table></div>
-    
-</div>        )}</div>
-  </Select></div>}</div>
+  
+</div> 
+    )}</div></div>}
+   
+  </Select></div>}
+  <div>{!oneof?<div></div>:<div className="account-page"><div class="container">
+              <form id="Regform">
+                <input value={lastname}   onChange={(e)=>setLastname(e.target.value)} />
+                <input value={num}        onChange={(e)=>setNum(e.target.value)} />
+                <input value={emaill}     onChange={(e)=>setEmaill(e.target.value)} />
+                 <br/><strong>Address: {localStorage.getItem("address")}</strong>
+                 <hr/>
+                  <small>This address is automatically selected from address input</small>
+                  <button class="btn" onClick={(e)=>RunGetFor(e)}>Get</button>
+              </form>
+            </div></div>}</div>
+  {saved==null?<div>
+      <i><strong><small><hr/>No saved free food<hr/></small></strong></i>
+    </div>:<div>
+     <i><strong><small><hr/>You can only save one free food<hr/></small></strong></i>
+</div>}</div>
 
 
 

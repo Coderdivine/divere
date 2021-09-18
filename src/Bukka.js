@@ -23,27 +23,36 @@ const {getone}=useContext(create);
  const[one,setOne]=useState();
  const[trigger,setTrigger]=useState(false);
 const [send,setSend]=useState(false);
- const[count,setCount]=useState(0);
+ const[count,setCount]=useState(null);
+ 
+
+
 
  useEffect(() => {
-  if(5===count){
-    setTrigger(true);
-  }else{setTrigger(false)}
-}, [trigger,count]);   
-useEffect(() => {
-  if(count>5){
-    setCount(0);
-  };
-}, [count]);  
- const selected=(e)=>{
-   e.preventDefault();
-   setCount(0);
-    localStorage.setItem("count",0);
-    setTrigger(false);
- }
-     
-   
-   
+  if(count!==null){
+    localStorage.setItem("count",count.toString())
+  }
+ }, [count])
+ 
+  useEffect(() => {
+   const localcounts=localStorage.getItem("count")
+   if(localcounts){
+     setCount(Number(localcounts));
+   };
+  }, []);
+  useEffect(() => {
+   if(count==5){
+  setTrigger(true)
+   }
+  }, [count]);
+  useEffect(() => {
+   if(count>5){
+     setTrigger(false);
+     setCount(null);
+   }
+  }, [count])
+
+  
   const [searchitem,setSearchitem]=useState("");
 
    
@@ -78,19 +87,21 @@ useEffect(() => {
    
       </td></tr></table></div></div>
    </div>);
+         const cartlists= localStorage.getItem('incart')?JSON.parse(localStorage.getItem('incart')):[]
+
+    const[incart,setIncart]=useState(cartlists);
+
     const addtocart=(lists)=>{
      setIncart([...incart,{...lists}]);
      localStorage.setItem('incart',JSON.stringify(incart));
 
       };
-      const cartlists= localStorage.getItem('incart')?JSON.parse(localStorage.getItem('incart')):[]
   
    const removefromcart=(xxxdhd)=>{
      setIncart(incart.filter (lists=>lists !== xxxdhd))   
   
     };
     
- const[incart,setIncart]=useState(cartlists);
 ;
 let totalone = 0;
 incart.forEach((list)=>{
@@ -113,7 +124,7 @@ const subtotal= totalone + 300 + addup ;
       lastname:localStorage.getItem('lastname'),
       total:subtotal
     }
-    const res= await Axios.post("/created",request).then((err)=>{alert("Thanks for ordring from diverefood, some would contact you from jumiafood.")})
+    const res= await Axios.post("/created",request).then(()=>{alert("Thanks for ordring from diverefood, some would contact you from jumiafood.")})
     if(res)getone() 
     console.log(request);
     setSend(true);
@@ -160,7 +171,7 @@ const subtotal= totalone + 300 + addup ;
        );
        
        
-       const[emaill,setEmaill]=useState("");
+  const[emaill,setEmaill]=useState("");
     
      
    const amount =subtotal;
@@ -214,7 +225,7 @@ const subtotal= totalone + 300 + addup ;
            if(!email){
        alert("Please Enter your Email")
            }else{
-            setOne(<PaystackButton className="btn" {...componentProps}/>);
+            setOne(<button class="btn" onClick={(e)=>Buy(e)}>Buy</button>);
   
            }
         }else{  e.preventDefault();
@@ -227,10 +238,81 @@ const subtotal= totalone + 300 + addup ;
         }
        
       };
-   
+      const rr=localStorage.getItem('saved')==[]?null:null
+   const[saved,setSaved]=useState(rr); 
+   useEffect(() =>{
+    const cartlistss=JSON.parse(localStorage.getItem('saved'));
+     if(cartlistss){
+       setSaved(cartlistss)
+     }
+  }, []);
+      const kvr= <div>{Product.filter((v)=>v.price <= freemap).map(vid=> 
+        <div>
+        <div class="small-container cart-page">
+       <table>
+       <tr>
+       <td>
+         <div class="cart-info">
+           <img src={vid.img} alt={vid.name}/>
+                <div>
+                <div class="price">
+           <p>{vid.des}</p>
+           <small>{vid.name}</small>
+           </div>
+           <br/>
+           <button class="btn-danger" onClick={()=>selected(vid)}>select</button>     </div></div>
+            
+       </td>
+       <td><input type="number" value="1" class="cart-quantity-price"/></td>
+       <td>{vid.price}</td>
+       </tr>
+       <tr>
+       <td>
+       
+            </td></tr></table></div>
+           
+       </div>)}</div>
+      const[oneof,setOneof]=useState(false);
+      const selected=(vid)=>{
+        setSaved([{...saved,...vid}]);
+        localStorage.setItem('saved',JSON.stringify(saved));
+ //https://www.instagram.com/_chimdi.xo_/
+//https://web.facebook.com/divine.ezechukwu.1?_rdc=1&_rdr
+         };
+        useEffect(() => {
+         localStorage.setItem("saved",JSON.stringify(saved));
+        }, [saved])
+           const selectedd=()=>{
+          setOneof(true);
 
-
-
+      }
+      const RunGetFor= async(e)=>{
+        e.preventDefault();
+        if(lastname.length > 3 && num.length>10){
+        const req= {
+         address:localStorage.getItem('address'),
+         num:num,
+         lastname:lastname
+       }
+       setSaved(null)
+       setOneof(false);
+         setCount(0);
+        setTrigger(false);
+        localStorage.setItem('saved',null);
+       const res= await Axios.post("/creating",req).then(()=>{
+        alert(`Your is being processed ${lastname},you would get a call from jumia food.`)
+        
+        setCount(0);
+       setTrigger(false);
+       localStorage.setItem('saved',null);
+       setOneof(false);
+       })
+    
+      }else{
+         alert("Please enter a valid infomation")
+       }
+      
+          };
 
 return(<div>
    {red ?<div><button onClick={(e)=>Sand(e)} className="addr">Back</button><div><div>
@@ -275,17 +357,23 @@ return(<div>
 <input type="phone" id="conpass" placeholder="Phone Number" onChange={(e)=>setNum(e.target.value)}  />
 <input type="email" id="email" placeholder="Email" onChange={(e)=>setEmaill(e.target.value)}  />
 
-<button type="submit" class="btn" >Procede</button>
+<button type="submit" class="btn" >Procced</button>
 </form></div>
 <div>{one}</div><div></div>
 </div>
-</div></div>:<div> you have bought "{count}" remaining 5 to get free food.</div>}
+</div></div>:<div>{count==5?<div>Free food is Available :)</div>:<div>you have bought "{localStorage.getItem("count")}" remaining 5</div>}</div>}
     </div>
     
 {!trigger?<div></div>:<div><Select>
+  
+{saved ==null?<div>
   <h1>FREE FOOD LISTS</h1>
   <hr id="Indi" />
-    <div>{Product.filter((v,s)=>v.price <= freemap).map(v=> 
+  <br/>
+    {kvr}</div>:<div><div>
+      <h1>SAVED FREE FOOD </h1>
+        <hr id="Indi" />
+      {saved!==null && saved.map(v=> 
  <div>
  <div class="small-container cart-page">
 <table>
@@ -299,20 +387,39 @@ return(<div>
     <small>{v.name}</small>
     </div>
     <br/>
-    <button class="btn-danger" onClick={(e)=>selected(e)}>select</button>     </div></div>
+    <button class="btn" onClick={(e)=>selectedd()}>Buy Now</button>    
+     </div></div>
      
 </td>
-<td><input type="number" value="1" class="cart-quantity-price"/></td>
+<td><small>Saved</small></td>
 <td>{v.price}</td>
 </tr>
 <tr>
 <td>
 
      </td></tr></table></div>
-    
-</div>      )}</div>
+  
+</div> 
+    )}</div>
+    </div>}
+   
   </Select></div>}
-
+  <div>{!oneof?<div></div>:<div className="account-page"><div class="container">
+              <form id="Regform">
+                <input value={lastname}   onChange={(e)=>setLastname(e.target.value)} />
+                <input value={num}        onChange={(e)=>setNum(e.target.value)} />
+                <input value={emaill}     onChange={(e)=>setEmaill(e.target.value)} />
+                 <br/><strong>Address: {localStorage.getItem("address")}</strong>
+                 <hr/>
+                  <small>This address is automatically selected from address input</small>
+                  <button class="btn" onClick={(e)=>RunGetFor(e)}>Get</button>
+              </form>
+            </div></div>}</div>
+  {saved===null?<div>
+      <i><strong><small><hr/>No saved free food<hr/></small></strong></i>
+    </div>:<div>
+     <i><strong><small><hr/>You can only save one free food<hr/></small></strong></i>
+</div>}
     
     </div></div> </div>:
 <div> 

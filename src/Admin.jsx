@@ -1,12 +1,16 @@
 import axios from 'axios';
-import React,{useState,useEffect,useContext} from 'react';
+import React,{useState,useEffect,useContext,useRef} from 'react';
 import './App.css';
 import {create} from "./App";
 import {createe} from "./App";
 
 function Backend() {
   //const [order]=useContext(createe);
-
+   const EndRef=useRef(null);
+   const scroll=()=>{
+     EndRef.current.scrollIntoView({behaviour:"smooth"});
+   }
+   useEffect(scroll,[])
   const {contact,order,}=useContext(create);
 
       const Person=contact;
@@ -89,7 +93,7 @@ function Backend() {
            
            </div>
      
-   
+   <div ref={EndRef}  />
         </div>
     );
 };

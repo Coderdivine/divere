@@ -11,9 +11,7 @@ import Theplace from "./Theplace";
 import Select from "./Select";
 import {create} from "./App";
 import About from './About';
-//import GooglePayButton from '@google-pay/button-react';
-//import {Map, InfoWindsow, Marker, GoogleApiWrapper} from 'google-maps-react';
-//import Myapp from "./Myapp";
+
 function Homepage() {
        
   const {submit,handles}=useContext(create);
@@ -87,7 +85,6 @@ function Homepage() {
       e.preventDefault();
        if(call===sedo){
         if(ans===sedopass){
-         // setError(true);
           e.preventDefault();
             setNextpage(<Admin  />);
             setOccur(true);}}
@@ -165,7 +162,6 @@ function Homepage() {
       };
      
     const Setting=(e)=>{
-     // e.preventDefault();
       setOccur(true);
       setNextpage(<div >
     
@@ -255,6 +251,9 @@ const restone=(e)=>{
     </div>
      </div></div></div>);
 };
+const heyisme=()=>{
+   localStorage.setItem("heyisme","Shaw not to show again")
+}
  const greet=!localStorage.getItem("username")?"Everyone":localStorage.getItem("username");  
     return (
         <div className="popss">
@@ -302,23 +301,24 @@ const restone=(e)=>{
         </div>
 }
          </div>
-         <div class="col-45">{!ok?<div>
+         <div class="col-45">
+           {!localStorage.getItem("heyisme")?<div> {!ok?<div>
           <small>Would you like to learn how<br/> to get free food from Diverefood 
               <button onClick={(e)=>shshs(e)}>YES</button> <button onClick={()=>setOks()}>NO</button> <small> Option from shaw.</small>
+              <br/><i><span onClick={heyisme}>Don't show me this again</span></i>
            </small>
-         </div>:<div></div>}
-          
-         </div>
+         </div>:<div></div>}</div>:<div></div>}
+           </div>
          <br/>
          <div className="pageinput">
            <label>Enter your Address :</label><br/>
            <input type="text" value={address} placeholder="No/Street/Town/City" onChange={(e)=>setAddress(e.target.value)}/><button className="address" onClick={(e)=>localStorage.setItem("address",address)}>Save</button></div><br/><br/>
         <div class="rest-3"><h2><i>Resturant for all</i></h2><hr/></div><br/>
-        <br/>
+        <br/><div className="cont-5-img">
          <div className="container-5">
            <h1>BUKKA HUT</h1>
           <hr id="Indi" />
-           <div className="cont-5-img"><img src="./img/bukkahut.png" alt="" width="100%" height="250px"
+           <div className=""><img src="./img/bukkahut.png" alt="" width="100%" height="250px"
             onClick={(e)=>restone(e)}
            /></div>
 
@@ -326,17 +326,17 @@ const restone=(e)=>{
          <div className="container-5">
            <h1>KFC</h1>
            <hr id="Indi" />
-           <div className="cont-5-img"><img  src="./img/IMG_20210620_112144.jpg" alt="" width="100%" height="250px"
+           <div className=""><img  src="./img/IMG_20210620_112144.jpg" alt="" width="100%" height="250px"
           onClick={(e)=>restwo(e)} /></div>
 
          </div>
          <div className="container-5">
            <h1>THE PLACE</h1>
            <hr id="Indi" />
-           <div className="cont-5-img"><img src="./img/thplace.png" alt="" width="100%" height="250px"
+           <div className=""><img src="./img/thplace.png" alt="" width="100%" height="250px"
           onClick={(e)=>restthree(e)} /></div>
 
-         </div>
+         </div></div>
          <br/>
          <div class=""><a href="https://Coderdivine.github.io/Dida/">
           <img src="./img/advertdivere.png"  alt="Advert Page ..." height="100%" width="100%"/>
@@ -371,7 +371,8 @@ const restone=(e)=>{
 <h3>Follow Us</h3>
 <ul>
 <li><a >YouTube</a></li>
-<li><a >Instagram</a></li>
+<li><a href=" //https://www.instagram.com/_chimdi.xo_/">Instagram</a></li>
+<li><a href="//https://web.facebook.com/divine.ezechukwu/">Facebook</a></li>
 </ul>
 </div>
 <div className="admin-input"><form onSubmit={(e)=>sksk(e)}><input value={call}  onChange={(e)=>setCall(e.target.value)}/><br/><input value={ans} onChange={(e)=>setAns(e.target.value)}/><br/><button type="submit" className="btn-1">A</button></form></div>
